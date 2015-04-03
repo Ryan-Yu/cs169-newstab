@@ -55,7 +55,6 @@ Scenario: a user can remove comments they suggested
   And I am on the show page for article by id "1"
   Then I should see "Some cool comment I want to add"
   And I follow "Delete"
-  And I accept the alert
   And I am on the show page for article by id "1"
   Then I should not see "Some cool comment I want to add"
 

@@ -12,7 +12,7 @@ gem 'devise'
 gem 'pismo'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'selenium-webdriver'
+# gem 'selenium-webdriver'
 gem 'faker'
 gem 'fakeweb'
 gem 'rake'
@@ -45,6 +45,8 @@ group :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'byebug'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   
 end
 
