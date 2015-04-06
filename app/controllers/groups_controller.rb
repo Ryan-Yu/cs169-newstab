@@ -22,11 +22,13 @@ class GroupsController < ApplicationController
   def invite
     user = User.find_by_email(params[:username])
     if user
+      # TODO: This method does not exist
+      # TODO: Need to change the VERB for group subscriptions... because followings are called subscriptions too
       if user.subscribes current_user
         GroupInvitation.create :user_if => user.id, :group_id => @group.id
         flash[:notice] = "Invitation has been sent"
       else
-        flash[:notice] = "You can only invite subscribers"
+        flash[:notice] = "You can only invite subscriberheroku s"
       end
     else
       flash[:notice] = "Could not find user #{params[:username]}"
