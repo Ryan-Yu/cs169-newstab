@@ -14,29 +14,33 @@ class CategoriesController < ApplicationController
     respond_with(@category)
   end
 
-  # def new
-  #   @category = Category.new
-  #   respond_with(@category)
-  # end
+# Put back in for Travis trial.
 
-  # def edit
-  # end
+  def new
+    @category = Category.new
+    respond_with(@category)
+  end
 
-  # def create
-  #   @category = Category.new(category_params)
-  #   @category.save
-  #   respond_with(@category)
-  # end
+  def edit
+  end
 
-  # def update
-  #   @category.update(category_params)
-  #   respond_with(@category)
-  # end
+  def create
+    @category = Category.new(category_params)
+    @category.save
+    respond_with(@category)
+  end
 
-  # def destroy
-  #   @category.destroy
-  #   respond_with(@category)
-  # end
+  def update
+    @category.update(category_params)
+    respond_with(@category)
+  end
+
+  def destroy
+    @category.destroy
+    respond_with(@category)
+  end
+
+# END trial
 
   private
     def set_category
