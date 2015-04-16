@@ -1,5 +1,14 @@
 require 'faker'
 
+Category.create!('name' => 'United States')
+Category.create!('name' => 'World')
+Category.create!('name' => 'Politics')
+Category.create!('name' => 'Tech')
+Category.create!('name' => 'Health')
+Category.create!('name' => 'Entertainment')
+Category.create!('name' => 'Travel')
+Category.create!('name' => 'Sports')
+
 # Users
 User.create!(first_name:"Example",
              last_name: "User",
@@ -20,14 +29,14 @@ User.create!(first_name:"Example",
               password_confirmation: password)
 end
 
-# Microposts
+# Articles
 users = User.order(:created_at).take(6)
 50.times do
   fake_url = Faker::Lorem.sentence(1)
   fake_comment = Faker::Lorem.sentence(2)
   fake_content = Faker::Lorem.sentence(4)
   users.each { |user| user.articles.create!(url: fake_url, initial_comment: fake_comment,
-    content: fake_content ) }
+    content: fake_content, categories: Category.all ) }
 end
 
 # Following relationships

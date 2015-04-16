@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @categories = Category.all
+    @categories = Category.order('name ASC')
     @article = Article.new
     respond_with(@article)
   end
