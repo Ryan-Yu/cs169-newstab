@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
       @articles = Article.all
     end
     @articles = @articles.page(params[:page] || 1).per(12)
+    @categories = Category.all
     respond_with(@articles)
   end
 
@@ -83,7 +84,7 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:url, :title, :datetime, :content, :photo, :initial_comment)
+      params.require(:article).permit(:url, :title, :datetime, :content, :photo, :initial_comment, categories_ids: [])
     end
     
     # Ensure that a signed in user can only delete articles that they have posted

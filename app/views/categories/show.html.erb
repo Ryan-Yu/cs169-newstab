@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<h1><%= @category.name %></h1>
+<body>
+  <div class="container">
+    <div class="row">
+      <% @articles.each do |article| %>
+          <%= render article %>
+      <% end %>
+    </div>
+  </div>
+  <%= paginate @articles %>
+</body>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
