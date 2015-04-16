@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   before_filter :set_user, only: [:show, :subscribing, :subscribers]
   
   def index
-    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search])
+      @search_on = true
+    else
+      @users = User.all
+    end
   end
   
   # We display only a user's posted articles on his/her show page
@@ -27,7 +32,7 @@ class UsersController < ApplicationController
     @users = @user.subscribers
     render 'show_subscribe'
   end
-  
+
   private
     def set_user
       @user = User.find(params[:id])

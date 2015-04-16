@@ -99,4 +99,16 @@ class User < ActiveRecord::Base
     first_name.to_s + " " + last_name.to_s
   end
   
+  # Hacky implementation of first/last name search
+  def self.search(query)
+    if (query.split.size > 1)
+      where("first_name like ? OR last_name like ? OR first_name like ? OR last_name like ?", "%#{query}%", "%#{query}%", "%#{query.split[0]}%", "%#{query.split[1]}%")
+    else
+      where("first_name like ? OR last_name like ? OR first_name like ?", "%#{query}%", "%#{query}%", "%#{query.split[0]}%")
+    end
+  end
+  
+  
+  
+  
 end

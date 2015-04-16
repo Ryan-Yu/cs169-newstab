@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     member do
       get :subscribing, :subscribers
     end
+    
+    collection do
+      get :search_for
+    end
   end
   
   resources :articles do

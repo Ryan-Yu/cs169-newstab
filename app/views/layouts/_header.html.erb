@@ -25,12 +25,8 @@
         <li><%= link_to "Groups", groups_path %></li>
         <li><%= link_to "All Users", users_path %></li>
         
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search for users...">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        <%= render 'layouts/search' %>
+     
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
