@@ -13,6 +13,14 @@
 </p>
 
 <p>
+  <strong>Categories:</strong>
+  <% @article.categories.each do |category| %>
+    <br /><%= category.name %>
+  <% end %>
+</p>
+
+
+<p>
   <strong>Title:</strong>
   <%= @article.title %>
 </p>

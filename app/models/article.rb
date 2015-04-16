@@ -9,6 +9,8 @@ class Article < ActiveRecord::Base
   has_many :comments
   has_many :likes
   
+  has_and_belongs_to_many :categories
+  
   # Given an already-initialized Article object with a URL, initial_comment, and user_id parameter
   # (these parameters' presence are validated), this method invokes the Pismo gem to 
   # populate the title, content, datetime, and photo attributes of the article

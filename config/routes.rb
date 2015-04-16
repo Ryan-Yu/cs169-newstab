@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   
+  resources :categories
+
   resources :groups
   post 'groups/subscribe/:id', to: 'groups#subscribe'
   post 'groups/unsubscribe/:id', to: 'groups#unsubscribe'
   post 'groups/invite/:id', to: 'groups#invite'
   resources :articles
+  resources :categories
   
   # We must declare a path prefix for devise user operations to avoid conflicts with CRUD user operations
   # Source: https://github.com/plataformatec/devise/wiki/How-To:-Manage-users-through-a-CRUD-interface

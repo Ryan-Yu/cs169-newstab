@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @article = Article.new
     respond_with(@article)
   end
@@ -37,6 +38,16 @@ class ArticlesController < ApplicationController
     
     # Uses Pismo (gem) to grab title, content, photo of URL
     @article.populate_url_fields
+    
+    # Populate article's categories
+    @selected_categories = params[:categories]
+    
+    # @selected_categories is a hash that looks like:
+    # {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"}
+    @selected_categories.each do |key, category_name|
+      @article.categories << Category.find_by_name(category_name)
+    end
+    
     if @article.save
       flash[:success] = "Article created!"
 
