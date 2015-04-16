@@ -45,8 +45,10 @@ class ArticlesController < ApplicationController
     
     # @selected_categories is a hash that looks like:
     # {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"}
-    @selected_categories.each do |key, category_name|
-      @article.categories << Category.find_by_name(category_name)
+    unless @selected_categories.nil?
+      @selected_categories.each do |key, category_name|
+        @article.categories << Category.find_by_name(category_name)
+      end
     end
     
     if @article.save
