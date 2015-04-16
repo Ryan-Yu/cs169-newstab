@@ -2,7 +2,7 @@
 
 <!-- Placeholder for listing all users -->
 <ul>
-  <%= @users.each do |user| %>
+  <% @users.each do |user| %>
     <li>
       <%= link_to user.full_name, user %>
     </li>
