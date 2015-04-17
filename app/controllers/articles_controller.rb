@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
 
   def edit
     if current_user.articles.find_by_id(params[:id]).nil?
-      flash[:notice] = "You do not have permission to edit this article."
+      flash[:warning] = "You do not have permission to edit this article."
       redirect_to @article
     end
   end
@@ -51,13 +51,17 @@ class ArticlesController < ApplicationController
       end
     end
     
-    if @article.save
+    if @article.save and !@selected_categories.nil?
       flash[:success] = "Article created!"
 
       # Might need to change the location of this redirect
       redirect_to root_url
     else
-      flash[:notice] = "Invalid article."
+      if @selected_categories.nil?
+        flash[:warning] = "You must associate this article with at least one category."
+      else
+        flash[:notice] = "Invalid article."
+      end
       redirect_to new_article_path
     end
     
@@ -74,7 +78,7 @@ class ArticlesController < ApplicationController
       @article.destroy
       flash[:notice] = "Article successfully destroyed."
     else
-      flash[:notice] = "You do not have permission to delete this article."
+      flash[:warning] = "You do not have permission to delete this article."
     end
     # TODO: change this to another redirect location
     redirect_to root_path

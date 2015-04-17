@@ -70,6 +70,10 @@ When /^(?:|I )uncheck "([^"]*)"$/ do |field|
   uncheck(field)
 end
 
+When /^I click the checkbox "([^"]*)"$/ do |id|
+   check(find("input[type='checkbox']")[:id])
+end
+
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)

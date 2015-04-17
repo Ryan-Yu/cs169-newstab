@@ -23,7 +23,7 @@
   <!-- Renders selected categories as a hash: {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"} -->
   <% unless @categories.nil? %>
     <% @categories.each do |t| %>
-      <%= f.label t.name %>
+      <%= t.name %>
       <%= check_box_tag "categories[#{t.id}]", t.name %>
       <br />
     <% end %>
