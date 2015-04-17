@@ -20,6 +20,7 @@ gem 'rake'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'kaminari'
 
+gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   gem 'sqlite3'
