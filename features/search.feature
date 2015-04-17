@@ -24,3 +24,5 @@ Scenario: a signed in user search for user by email
   Then I fill in "search_field" with "helloworld1@gmail.com"
   Then I press "Search"
   Then I should see "Hello1 World1"
+  
+  
