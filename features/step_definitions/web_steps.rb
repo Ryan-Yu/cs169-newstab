@@ -66,8 +66,16 @@ When /^(?:|I )check "([^"]*)"$/ do |field|
   check(field)
 end
 
+Then /^(?:|I )should see "([^"]*)" filled in with "([^"]*)"$/ do |field, value|
+  page.should have_field(field, with: value)
+end
+
 When /^(?:|I )uncheck "([^"]*)"$/ do |field|
   uncheck(field)
+end
+
+When /^I click the checkbox "([^"]*)"$/ do |id|
+   check(find("input[type='checkbox']")[:id])
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|

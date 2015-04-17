@@ -18,7 +18,6 @@ Scenario: a signed in user can post an article
   When I follow "New Article"
   And I fill in "Url" with "Hello_World_Article_URL.com"
   And I fill in "Initial comment" with "My first comment"
-  # And I check "Entertainment"
   And I press "Create Article"
   Then I should see "Article created!"
   Then article url "Hello_World_Article_URL.com" should exist

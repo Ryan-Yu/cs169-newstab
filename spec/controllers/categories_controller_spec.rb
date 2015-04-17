@@ -88,13 +88,6 @@ describe CategoriesController do
         post :create, {:category => { "name" => "invalid value" }}, valid_session
         assigns(:category).should be_a_new(Category)
       end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Category.any_instance.stub(:save).and_return(false)
-        post :create, {:category => { "name" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
     end
   end
 
@@ -130,14 +123,6 @@ describe CategoriesController do
         Category.any_instance.stub(:save).and_return(false)
         put :update, {:id => category.to_param, :category => { "name" => "invalid value" }}, valid_session
         assigns(:category).should eq(category)
-      end
-
-      it "re-renders the 'edit' template" do
-        category = Category.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Category.any_instance.stub(:save).and_return(false)
-        put :update, {:id => category.to_param, :category => { "name" => "invalid value" }}, valid_session
-        response.should render_template("edit")
       end
     end
   end
