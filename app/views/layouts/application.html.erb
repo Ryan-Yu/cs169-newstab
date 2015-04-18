@@ -15,7 +15,7 @@
   
   <div class="container">
   
-    <!-- For some reason, two flashes get printed... -->
+    <!-- CSS for flashes is messed up... -->
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
@@ -26,3 +26,4 @@
 </body>
 
 </html>
+

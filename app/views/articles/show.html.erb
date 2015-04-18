@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <div class="article-show">
   
@@ -39,12 +38,6 @@
   <div class="article-content">
     <%= @article.content.html_safe unless @article.content.blank? %>
   </div>
-  
-  <br />
-  
-  <strong>Initial Comment:</strong>
-  <%= @article.initial_comment %>
-  
   
   </p><%= link_to 'Edit Article', edit_article_path(@article) %></p>
   </p><%= link_to 'Delete Article', @article, method: :delete, data: { confirm: 'Are you sure?' } %></p>

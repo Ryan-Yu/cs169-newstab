@@ -67,7 +67,9 @@ class ArticlesController < ApplicationController
     
     if @article.save
       flash[:success] = "Article created!"
-
+      
+      # Create comment for article with initial_comment
+      Comment.create!('body' => @article.initial_comment, 'user_id' => current_user.id, 'article_id' => @article.id)
       # Might need to change the location of this redirect
       redirect_to root_url
     else
