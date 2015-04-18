@@ -1,5 +1,7 @@
 require 'faker'
 
+AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+
 Category.create!('name' => 'United States')
 Category.create!('name' => 'World')
 Category.create!('name' => 'Politics')

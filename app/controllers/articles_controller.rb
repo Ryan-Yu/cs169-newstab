@@ -51,17 +51,27 @@ class ArticlesController < ApplicationController
       end
     end
     
-    if @article.save and !@selected_categories.nil?
+    # if @article.save and !@selected_categories.nil?
+    #   flash[:success] = "Article created!"
+
+    #   # Might need to change the location of this redirect
+    #   redirect_to root_url
+    # else
+    #   if @selected_categories.nil?
+    #     flash[:warning] = "You must associate this article with at least one category."
+    #   else
+    #     flash[:notice] = "Invalid article."
+    #   end
+    #   redirect_to new_article_path
+    # end
+    
+    if @article.save
       flash[:success] = "Article created!"
 
       # Might need to change the location of this redirect
       redirect_to root_url
     else
-      if @selected_categories.nil?
-        flash[:warning] = "You must associate this article with at least one category."
-      else
-        flash[:notice] = "Invalid article."
-      end
+      flash[:notice] = "Invalid article."
       redirect_to new_article_path
     end
     
