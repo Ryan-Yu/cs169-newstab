@@ -5,6 +5,8 @@ class Group < ActiveRecord::Base
   has_many :group_subscriptions
   
   has_many :users, through: :group_subscriptions
+
+  has_many :articles
   
   def followers
     users.count

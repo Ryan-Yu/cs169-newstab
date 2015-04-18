@@ -100,7 +100,7 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:url, :title, :datetime, :content, :photo, :initial_comment, categories_ids: [])
+      params.require(:article).permit(:url, :group_id, :title, :datetime, :content, :photo, :initial_comment, categories_ids: [])
     end
     
     # Ensure that a signed in user can only delete articles that they have posted

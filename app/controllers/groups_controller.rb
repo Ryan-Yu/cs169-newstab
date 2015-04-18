@@ -47,6 +47,9 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @article = Article.new :group_id => @group.id
+    @articles = @group.articles.page(params[:page] || 1).per(12)
+    
     respond_with(@group)
   end
 

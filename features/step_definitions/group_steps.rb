@@ -45,5 +45,9 @@ Then(/^the user "1" created the following groups:$/) do |table|
       User.find(1).groups.create :group_name => row[:groupname], :subscribers_only => true
     end
   end
-  
 end
+
+Given(/^group "(.*?)" has "(.*?)" article$/) do |arg1, arg2|
+  Group.find_by_group_name(arg1).articles.count.should == arg2.to_i
+end
+
