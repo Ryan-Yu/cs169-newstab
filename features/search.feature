@@ -20,6 +20,11 @@ Scenario: a signed in user search for user by last name
   Then I press "Search"
   Then I should see "Hello1 World1"
   
+Scenario: a signed in user search for user by first and last name
+  Then I fill in "search_field" with "Hello1 World1"
+  Then I press "Search"
+  Then I should see "Hello1 World1"
+  
 Scenario: a signed in user search for user by email
   Then I fill in "search_field" with "helloworld1@gmail.com"
   Then I press "Search"
