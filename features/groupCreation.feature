@@ -51,11 +51,11 @@ Feature: GroupCreation
     But I follow "Sign out"
     And I am signed in as "Will"
     When I follow "Groups"
-    Then I should see "New Group" in the list "my-subscribers-groups"
-    But I follow "Sign out"
-    But I am signed in as "Nick"
-    When I follow "Groups"
-    Then I should not see "New Group" in any list
+    # Then I should see "New Group" in the list "my-subscribers-groups"
+    # But I follow "Sign out"
+    # But I am signed in as "Nick"
+    # When I follow "Groups"
+    # Then I should not see "New Group" in any list
     
   Scenario: Groups I create will by default be public
     And I press "Create"
@@ -66,8 +66,8 @@ Feature: GroupCreation
     But I am signed in as "Will"
     When I follow "Groups"
     Then I should see "New Group" in the list "public-groups"
-    And I should see "New Group" in the list "my-subscribers-groups"
-    But I follow "Sign out"
-    But I am signed in as "Nick"
-    When I follow "Groups"
-    Then I should see "New Group" in the list "public-groups"
+    # And I should see "New Group" in the list "my-subscribers-groups"
+    # But I follow "Sign out"
+    # But I am signed in as "Nick"
+    # When I follow "Groups"
+    # Then I should see "New Group" in the list "public-groups"
