@@ -20,17 +20,22 @@
     <%= f.text_field :initial_comment %>
   </div>
   
-  <!-- Renders selected categories as a hash: {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"} -->
-  <% unless @categories.nil? %>
-    <% @categories.each do |t| %>
-      <%= t.name %>
-      <%= check_box_tag "categories[#{t.id}]", t.name %>
-      <br />
-    <% end %>
-  <% end %>
+  <!--<div class="col-xs-6">-->
+  <span style="padding-left: 10px; display:block">
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <!-- Renders selected categories as a hash: {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"} -->
+    <% unless @categories.nil? %>
+      <% @categories.each do |t| %>
+        <%= t.name %>
+        <%= check_box_tag "categories[#{t.id}]", t.name %>
+        <br />
+      <% end %>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   
+  </span>
+
 <% end %>
