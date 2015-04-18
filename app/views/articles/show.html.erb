@@ -1,107 +1,104 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="article-show">
+  
+  <b>Categories</b>:
+  <% @article.categories.each do |category| %>
+    | <%= category.name %>
+  <% end %>
+  
+  <h1><%= @article.title %></h1>
+  
+  <!-- Show photo only if it was pulled successfully with Pismo -->
+  <% unless @article.photo.empty? %>
+   <%= image_tag @article.photo %>
+  <% end %> 
+  
+  <br />
+  
+  <!-- Display who posted the article -->
+  <div class="article-posted-by">
+    Posted <%= time_ago_in_words(@article.created_at) %> ago by: <%= @article.user.first_name %> <%= @article.user.last_name %>
+  </div>
+  
+  <br />
+  
   <strong>Number of Likes:</strong>
   <%= @article.likes.size %>
-</p>
-
-<%= render 'likes/likes_form' %>
-
-<p>
+  
+  <%= render 'likes/likes_form' %>
+  
+  <br /><br />
+  
   <strong>Url:</strong>
   <%= @article.url %>
-</p>
 
-<p>
-  <strong>Categories:</strong>
-  <% @article.categories.each do |category| %>
-    <br /><%= category.name %>
-  <% end %>
-</p>
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
+  <br /><br />
+  
+  <!-- Article content -->
+  <div class="article-content">
+    <%= @article.content.html_safe unless @article.content.blank? %>
+  </div>
+  
+  <br />
+  
   <strong>Initial Comment:</strong>
   <%= @article.initial_comment %>
-</p>
-
-<p>
-  <strong>Datetime:</strong>
-  <%= @article.datetime %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content.html_safe unless @article.content.blank? %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @article.photo %>
-</p>
-
-<!-- Placeholder for testing purposes... -->
-<p>
-  <strong>User email:</strong>
-  <%= @article.user.email %>
-</p>
-
-</p><%= link_to 'Edit Article', edit_article_path(@article) %></p>
-</p><%= link_to 'Destroy Article', @article, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-
-
-<!-- Placeholder to display comments... -->
-
-<% if @article.comments.count > 0 %>
-
-  <b>Post comments:</b><br />
   
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>User email</th>
-        <th>Comment</th>
-        <th></th>
-      </tr>
-    </thead>
   
-    <tbody>
-      <% @article.comments.each do |comment| %>
+  </p><%= link_to 'Edit Article', edit_article_path(@article) %></p>
+  </p><%= link_to 'Delete Article', @article, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  
+  
+  <!-- Placeholder to display comments... -->
+  
+  <% if @article.comments.count > 0 %>
+  
+    <b>Post comments:</b><br />
+    
+    <table>
+      <thead>
         <tr>
-          <td>(posted <%= time_ago_in_words(comment.created_at) %> ago)</td>
-          <td><%= comment.user.email %></td>
-          <td><%= comment.body %></td>
-          <% if comment.posted_by? current_user %>
-            <td><%= link_to "Delete", article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, :id => "delete_comment" %></td>
-          <% end %>
+          <th></th>
+          <th>User email</th>
+          <th>Comment</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% else %>
-
-  <b>No comments.</b>
+      </thead>
+    
+      <tbody>
+        <% @article.comments.each do |comment| %>
+          <tr>
+            <td>(posted <%= time_ago_in_words(comment.created_at) %> ago)</td>
+            <td><%= comment.user.email %></td>
+            <td><%= comment.body %></td>
+            <% if comment.posted_by? current_user %>
+              <td><%= link_to "Delete", article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, :id => "delete_comment" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   
-<% end %>
-<br />
+  <% else %>
+  
+    <b>No comments.</b>
+    
+  <% end %>
+  <br />
+  
+  <!-- End of placeholder to display comments... -->
+  
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %>
+  
+  <br /><br />
+  
+  <%= form_for ([@article, @article.comments.build]) do |f| %>
+    <div class="field">
+      <%= f.text_area :body, placeholder: "Compose new comment...", :id => "comment_box" %>
+    </div>
+    <%= f.submit "Post" %>
+  <% end %>
 
-<!-- End of placeholder to display comments... -->
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
-
-<br /><br />
-
-<%= form_for ([@article, @article.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.text_area :body, placeholder: "Compose new comment...", :id => "comment_box" %>
-  </div>
-  <%= f.submit "Post" %>
-<% end %>
+</div>
