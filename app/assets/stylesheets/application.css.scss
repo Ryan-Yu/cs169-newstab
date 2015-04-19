@@ -21,7 +21,6 @@ body {
   background: #e9e9e9;
 }
 
-
 // Article show overrides
 
 .article-show h1 {
@@ -47,6 +46,10 @@ body {
 
 .article-categories {
   font-size: 18px;
+}
+
+.profile-navbar {
+  border: 1px solid black;
 }
 
 
@@ -90,6 +93,27 @@ body {
 .nav-dropdown-icon {
   margin: 8px -10px 0 0;
 }
+
+.nav-dropdown-icon-right {
+  margin: 8px 20px 0 0;
+}
+
+.nav-dropdown-icon-right .glyphicon {
+  margin-right: 5px;
+}
+
+.nav-dropdown-icon-right .btn {
+  padding-right: 20px;
+}
+
+.nav-dropdown-icon-right .caret {
+  margin-left: 5px;
+}
+
+.navbar-button {
+  background-color: white;
+}
+
 
 
 // Dropdown submenus
