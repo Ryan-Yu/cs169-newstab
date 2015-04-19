@@ -1,10 +1,13 @@
 
 <div class="article-show">
   
+  <!-- Render categories of the article -->
   <div class="article-categories">
-    <b>Categories</b>:
-    <% @article.categories.each do |category| %>
-      | <%= category.name %>
+    <% unless @article.categories.empty? %>
+      <b>Categories</b>:
+      <% @article.categories.each do |category| %>
+        | <%= category.name %>
+      <% end %>
     <% end %>
   </div>
   

@@ -81,5 +81,3 @@ Scenario: a user can edit his article
   And I fill in "Initial comment" with "I changed my comment."
   And I press "Update Article"
   Then I should see "Article successfully updated."
-  And I am on the show page for article "cool_news_article.com"
-  And I should see "I changed my comment."
