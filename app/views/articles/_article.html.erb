@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding-top: 5px;">
   <div style="background-color: #f2f2f2;">
     <h3><%= article.title %></h3>
-    <div><%= image_tag article.photo %></div>
+    <div><%= image_tag article.photo, :class => "article-picture" %></div>
     Written by <%= article.title %><br>
     Posted by <%= article.user.full_name %><br>
     <%= article.likes.count %> Likes<br>

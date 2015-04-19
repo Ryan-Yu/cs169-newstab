@@ -1,16 +1,18 @@
 
 <div class="article-show">
   
-  <b>Categories</b>:
-  <% @article.categories.each do |category| %>
-    | <%= category.name %>
-  <% end %>
+  <div class="article-categories">
+    <b>Categories</b>:
+    <% @article.categories.each do |category| %>
+      | <%= category.name %>
+    <% end %>
+  </div>
   
   <h1><%= @article.title %></h1>
   
   <!-- Show photo only if it was pulled successfully with Pismo -->
   <% unless @article.photo.nil? or @article.photo.empty? %>
-   <%= image_tag @article.photo %>
+   <%= image_tag @article.photo, :class => "article-picture" %>
   <% end %> 
   
   <br />
