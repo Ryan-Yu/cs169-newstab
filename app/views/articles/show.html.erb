@@ -36,13 +36,15 @@
     <div class="col-md-4">
       <!-- Display who posted the article -->
       <div class="article-posted-by">
-        Posted <%= time_ago_in_words(@article.created_at) %> ago by: <%= @article.user.first_name %> <%= @article.user.last_name %>
+        Posted <%= time_ago_in_words(@article.created_at) %> ago by: <a href=<%= user_path(@article.user.id) %>><%= @article.user.first_name %> <%= @article.user.last_name %></a>
       </div>
       
       <br />
       
       <strong>Number of Likes:</strong>
       <%= @article.likes.size %>
+      
+      <br />
       
       <%= render 'likes/likes_form' %>
       

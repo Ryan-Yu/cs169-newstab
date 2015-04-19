@@ -1,14 +1,22 @@
-<!-- Placeholder header for user sign in -->
-
-
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-custom" role="navigation">
   <div class="container-fluid">
    <div class="navbar-header">
       <a class="navbar-brand" href="<%= root_path %>">NewsTab</a>
    </div>
    <div>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path %></li>
+        
+        <li>
+          <div class="nav-dropdown-icon">
+            <button type="button" class="btn btn-default">
+              <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+            </button>
+          </div>
+        </li>
+        
+        <%= render 'layouts/search' %>
+        
+
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Article Categories <span class="caret"></span></a>
@@ -24,8 +32,6 @@
         
         <li><%= link_to "Groups", groups_path %></li>
         <li><%= link_to "All Users", users_path %></li>
-        
-        <%= render 'layouts/search' %>
      
       </ul>
       

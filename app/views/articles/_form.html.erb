@@ -20,15 +20,19 @@
     <%= f.text_field :initial_comment %>
   </div>
   
+  <br />
+  
   <!--<div class="col-xs-6">-->
   <span style="padding-left: 10px; display:block">
-
+    <i>Select one or more categories for article:</i><br /><br />
     <!-- Renders selected categories as a hash: {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"} -->
     <% unless @categories.nil? %>
       <% @categories.each do |t| %>
         <%= t.name %>
         <%= check_box_tag "categories[#{t.id}]", t.name %>
-        <br />
+       
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       
       <% end %>
     <% end %>
 
