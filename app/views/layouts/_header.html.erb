@@ -54,7 +54,18 @@
             <div class="nav-dropdown-icon-right">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 <button type="button" class="btn btn-custom">
-                  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                  
+                  <!-- Display user's facebook picture if authenticated with facebook, stock photo otherwise -->
+                  <% if current_user.provider == "facebook" and !current_user.image.nil? and !current_user.image.empty? %>
+                    
+                    <div class="circle">
+                      <%= image_tag(current_user.image, :class => "fb-image-navbar") %>
+                    </div>
+
+                  <% else %>
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  <% end %>
+                  
                   <%= current_user.first_name %>
                   <span class="caret"></span>
                 </button>
