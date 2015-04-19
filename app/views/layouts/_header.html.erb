@@ -6,45 +6,60 @@
    <div>
       <ul class="nav navbar-nav">
         
-        <li>
-          <div class="nav-dropdown-icon">
-            <button type="button" class="btn btn-default">
-              <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-            </button>
-          </div>
-        </li>
-        
-        <%= render 'layouts/search' %>
-        
-
-        
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Article Categories <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <% Category.all.each do |category| %>
-              <li><a href=<%= category_path(category.id) %>><%= category.name %></a></li>
-            <% end %>
+          <div class="nav-dropdown-icon">
+            <!-- Code for dropdown -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+              </button>
+            </a>
             
-            <li class="divider"></li>
-            <li><a href=<%= articles_path %>>View all articles</a></li>
-          </ul>
+            <!-- Dropdown items -->
+            <ul class="dropdown-menu multi-level" role="menu">
+              <li><%= link_to "Groups", groups_path %></li>
+              <li><%= link_to "All Users", users_path %></li>
+              <li class="divider"></li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Article categories</a>
+                <ul class="dropdown-menu">
+                  <% Category.all.each do |category| %>
+                    <li><a tabindex="-1" href=<%= category_path(category.id) %>><%= category.name %></a></li>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+              
+          </div> <!-- End of 'nav-dropdown-icon -->
         </li>
-        
-        <li><%= link_to "Groups", groups_path %></li>
-        <li><%= link_to "All Users", users_path %></li>
-     
-      </ul>
+        <%= render 'layouts/search' %>
+      </ul> <!-- End of 'nav navbar-nav' (left side) -->
+      
       
       <ul class="nav navbar-nav navbar-right">
+        <!-- Display 'new article' link and dropdown menu if user is signed in -->
         <% if user_signed_in? %>
           <li><%= link_to 'New Article', new_article_path %>
-          <li><%= link_to current_user.first_name, current_user %>
-          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <%= current_user.first_name %> 
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to "My Profile", current_user %>
+              <li class="divider"></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+            </ul>
+          </li>
+          
+        <!-- Else display option for user to sign in or sign up -->
         <% else %>
           <li><%= link_to "Sign in", new_user_session_path %>
           <li><%= link_to "Sign up", new_user_registration_path %>
         <% end %>
-      </ul>
+    
+      </ul> <!-- End of right side navbar -->
+      
    </div>
   </div>
 </nav>
