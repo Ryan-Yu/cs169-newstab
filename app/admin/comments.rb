@@ -1,4 +1,4 @@
-ActiveAdmin.register Article do
+ActiveAdmin.register Comment, :as => "ArticleComment" do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -16,9 +16,9 @@ ActiveAdmin.register Article do
   index do
     selectable_column
     id_column
-    column :url
-    column :title
+    column :body
     column :created_at
+    column :article_id
     actions
   end
 

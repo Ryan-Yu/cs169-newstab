@@ -1,4 +1,4 @@
-ActiveAdmin.register Article do
+ActiveAdmin.register User do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -16,10 +16,12 @@ ActiveAdmin.register Article do
   index do
     selectable_column
     id_column
-    column :url
-    column :title
-    column :created_at
+    column :email
+    column :provider
+    column :first_name
+    column :last_name
     actions
   end
+
 
 end
