@@ -37,8 +37,9 @@ users = User.order(:created_at).take(6)
   fake_url = Faker::Lorem.sentence(1)
   fake_comment = Faker::Lorem.sentence(2)
   fake_content = Faker::Lorem.sentence(4)
+  fake_title = Faker::Lorem.sentence(6)
   users.each { |user| user.articles.create!(url: fake_url, initial_comment: fake_comment,
-    content: fake_content, categories: Category.all ) }
+    content: fake_content, categories: Category.all, title: fake_title ) }
 end
 
 # Following relationships

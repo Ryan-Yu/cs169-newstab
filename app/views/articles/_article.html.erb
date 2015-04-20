@@ -1,12 +1,10 @@
 <a href="<%= article_path(article) %>">
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="padding-top: 5px;">
-  <div style="background-color: #f2f2f2;">
-    <h3><%= article.title %></h3>
-    <div><%= image_tag article.photo, :class => "article-picture" %></div>
-    Written by <%= article.title %><br>
-    Posted by <%= article.user.full_name %><br>
-    <%= article.likes.count %> Likes<br>
-    <a href=<%= article.url %>>View Original</a>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="indiv-article">
+      <h4><%= article.title %></h4>
+      <hr />
+      Posted by <%= article.user.full_name %><br>
+      <%= article.likes.count %> Likes<br>
+    </div>
   </div>
-</div>
 </a>
