@@ -19,6 +19,7 @@ gem 'rake'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 gem 'activeadmin', github: 'activeadmin'
 
