@@ -2,13 +2,12 @@
   <div class="container-fluid">
    <div class="navbar-header">
      
-      <div class="nav-dropdown-icon-logo">
+    <!-- Logo --> 
+    <div class="nav-dropdown-icon-logo">
+      <a href=<%= root_path %>>
         <%= image_tag "NT_logo.png", :class => "logo-navbar" %>
-      </div>
-            
-
-     
-
+      </a>
+    </div>
       
    </div>
    <div>
@@ -52,7 +51,7 @@
             <div class="nav-dropdown-icon-pen">
               <a href=<%= new_article_path %>>
                 <button type="button" class="btn btn-custom">
-                  <span class="glyphicon glyphicon-pencil"></span>
+                  <span class="glyphicon glyphicon-pencil glyphicon-new-article"></span>
                 </button>
               </a>
             </div>

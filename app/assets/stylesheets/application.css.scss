@@ -147,6 +147,11 @@ body {
   color: #a6a6a6;
 }
 
+// Color of new article button
+.btn .glyphicon-new-article {
+  color: #6db0da;
+}
+
 .fb-image-navbar {
   height: 20px;
 }
@@ -154,6 +159,12 @@ body {
 .logo-navbar {
   height: 45px;
   margin: -5px 10px 0 10px;
+}
+
+
+.nav-dropdown-icon-logo a:hover {
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .circle {
@@ -270,4 +281,60 @@ body {
 .btn {
   font-family: "Helvetica Neue",  Arial,  Helvetica,  sans-serif;
   font-weight: 700;
+}
+
+.nav-dropdown-icon a:hover {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+
+// Custom container box
+
+.small-container {
+  border-radius: 25px;
+  padding: 10px 30px 10px 30px;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0px 4px 4px #bebebe;
+}
+
+.small-container h1 {
+  font-weight: 300; 
+}
+
+.small-container .sign-in-form {
+  width: 400px;
+  height: 40px;
+  padding: 10px;
+  font-family: "Helvetica Neue",  Arial,  Helvetica,  sans-serif;
+  font-weight: 300;
+  border-radius: 15px;
+  border: 1px #bebebe solid;
+}
+
+.fb-login-button {
+  width: 60%;
+  padding: 12px 80px;
+  border-radius: 15px;
+  background-color: #30487b;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.fb-login-button:hover {
+  background-color: #2a3e69;
+}
+
+.fb-button {
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+
+.fb-button a {
+  color: white;
 }
