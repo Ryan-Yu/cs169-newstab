@@ -303,7 +303,7 @@ body {
 
 .small-container {
   border-radius: 25px;
-  padding: 10px 30px 10px 30px;
+  padding: 10px 30px 30px 30px;
   margin: 0 auto;
   text-align: center;
   width: 80%;
@@ -467,4 +467,18 @@ body {
 
 .logo-footer {
   height: 75px;
+}
+
+.user-pagination {
+  text-align: center;
+}
+
+.user-list {
+  text-align: left;
+  margin-left: 10%;
+  font-size: 18px;
+}
+
+.user-list ul li {
+  list-style-type: none;
 }
