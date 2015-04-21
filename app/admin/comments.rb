@@ -23,5 +23,11 @@ ActiveAdmin.register Comment, :as => "ArticleComment" do
     column :article_id
     actions
   end
+  
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 
 end

@@ -21,5 +21,11 @@ ActiveAdmin.register Article do
     column :created_at
     actions
   end
+  
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 
 end
