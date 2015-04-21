@@ -408,6 +408,11 @@ body {
   border-radius: 10px;
   font-family: "Helvetica Neue",  Arial,  Helvetica,  sans-serif;
   font-size: 13px;
+  transition: 1.5s;
+}
+
+.indiv-article:hover {
+  background-color: #D0E5F2;
 }
 
 .col-lg-3 {
