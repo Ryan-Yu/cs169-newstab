@@ -337,7 +337,7 @@ body {
   transition: 0.3s;
 }
 
-.new-article-button {
+.logo-picture-button {
   width: 60%;
   padding: 12px 80px;
   border-radius: 15px;
@@ -349,7 +349,7 @@ body {
   border: 1px solid #BFBFBF;
 }
 
-.new-article-button:hover {
+.logo-picture-button:hover {
   background-color: #61A0C7
 }
 
@@ -378,6 +378,10 @@ body {
 
 .fb-button a {
   color: white;
+}
+
+.fb-button a:hover {
+  text-decoration: none;
 }
 
 
@@ -426,4 +430,22 @@ body {
 .pagination-sm {
   font-family: "Helvetica Neue",  Arial,  Helvetica,  sans-serif;
   box-shadow: 0px 1px 1px #bebebe;
+}
+
+// Footer styles
+.footer-bottom {
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  margin-top: 15px;
+  box-shadow: 0px 1px 1px #bebebe, 0px -1px 1px #bebebe;
+  padding: 15px;
+  text-align: center;
+  font-size: 10px;
+  color: #bebebe;
+  font-family: Courier;
+}
+
+.logo-footer {
+  height: 75px;
 }
