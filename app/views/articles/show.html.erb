@@ -1,5 +1,4 @@
 <div class="article-show">
-  
   <!-- Render categories of the article -->
   <div class="article-categories">
     <% unless @article.categories.empty? %>
@@ -82,7 +81,7 @@
           
           <hr />
         <% end %>
-      </div>
+      </div> <!-- End of comments -->
       
       <% else %>
         <b>No comments.</b>
@@ -94,11 +93,8 @@
         </div>
         <%= f.submit "Post", :class => "btn btn-custom" %>
       <% end %>
-      
-      
+  
     </div>
   </div>
-  
 </div>
-
 <br /><br />

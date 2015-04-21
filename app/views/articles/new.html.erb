@@ -1,7 +1,9 @@
-<h1>New article</h1>
-
-<%= render 'form' %>
-
-<span style="padding-left: 10px; display:block">
-  <%= link_to 'Back', articles_path %>
-</span>
+<div class="small-container">
+  <h1>New article</h1>
+  <%= render 'form' %>
+  <span>
+    <%= link_to 'Back', articles_path, :class => "btn btn-custom" %>
+    <br />
+  </span>
+</div>
+<br />

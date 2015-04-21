@@ -45,7 +45,7 @@ body {
 }
 
 .article-categories {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .profile-navbar {
@@ -316,6 +316,16 @@ body {
   border: 1px #bebebe solid;
 }
 
+.small-container .large-text-form {
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  font-family: "Helvetica Neue",  Arial,  Helvetica,  sans-serif;
+  font-weight: 300;
+  border-radius: 15px;
+  border: 1px #bebebe solid;
+}
+
 .fb-login-button {
   width: 60%;
   padding: 12px 80px;
@@ -324,6 +334,23 @@ body {
   color: white;
   font-weight: 400;
   letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.new-article-button {
+  width: 60%;
+  padding: 12px 80px;
+  border-radius: 15px;
+  background-color: #6db0da;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  border: 1px solid #BFBFBF;
+}
+
+.new-article-button:hover {
+  background-color: #61A0C7
 }
 
 .signin-button {
@@ -378,7 +405,16 @@ body {
   padding: 20px;
   box-shadow: 0px 2px 2px #bebebe;
   border-radius: 15px;
-  
+}
+
+.article-show h1 {
+  font-weight: 300;
+}
+
+.form-list-categories {
+  text-align: left;
+  margin-left: 25%;
+  line-height: 18px;
 }
 
 // Account for padding of article-show div
@@ -389,4 +425,5 @@ body {
 // Pagination customization
 .pagination-sm {
   font-family: "Helvetica Neue",  Arial,  Helvetica,  sans-serif;
+  box-shadow: 0px 1px 1px #bebebe;
 }
