@@ -7,8 +7,8 @@ class ArticlesController < ApplicationController
   def index
     if user_signed_in?
       @articles = current_user.article_feed
-      # if there are too few articles on a user's feed (== 0), we want to display more articles
-      if (@articles.size == 0)
+      # if there are too few articles on a user's feed (< 6), we want to display more articles
+      if (@articles.size < 6)
         @articles = Article.order('created_at DESC').page(params[:page] || 1).per(12)
       end
     else

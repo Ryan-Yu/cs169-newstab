@@ -57,42 +57,7 @@
       
       <br /><br />
       
-      <% if @article.comments.count > 0 %>
-      
-      <div class="article-comments">
-        <b>Post comments:</b>
-        
-        <hr />
-        
-        <% @article.comments.each do |comment| %>
-          <div class="article-comment-body">
-            <%= comment.body %>
-          </div>
-          
-          <i>
-            (posted <%= time_ago_in_words(comment.created_at) %> ago by <a href=<%= user_path(comment.user.id) %>><%= comment.user.first_name %></a>)
-          </i>
-
-          <br />
-          
-          <% if comment.posted_by? current_user %>
-            <td><%= link_to "Delete", article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, :id => "delete_comment" %></td>
-          <% end %>
-          
-          <hr />
-        <% end %>
-      </div> <!-- End of comments -->
-      
-      <% else %>
-        <b>No comments.</b>
-      <% end %>
-      
-      <%= form_for ([@article, @article.comments.build]) do |f| %>
-        <div class="field">
-          <%= f.text_area :body, placeholder: "Compose new comment...", :id => "comment_box" %>
-        </div>
-        <%= f.submit "Post", :class => "btn btn-custom" %>
-      <% end %>
+      <%= render 'comments' %>
   
     </div>
   </div>
