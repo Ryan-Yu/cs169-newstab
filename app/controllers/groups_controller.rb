@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
         GroupInvitation.create :user_if => user.id, :group_id => @group.id
         flash[:notice] = "Invitation has been sent"
       else
-        flash[:notice] = "You can only invite subscriberheroku s"
+        flash[:notice] = "You can only invite subscribers"
       end
     else
       flash[:notice] = "Could not find user #{params[:username]}"
@@ -37,12 +37,11 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.where(:private => false, :subscribers_only => false)
+    @groups = Group.where(:private => false)
     if user_signed_in?
+      @group = Group.new :user_id => current_user.id
       @my_groups = current_user.groups
-      @group_invitations = current_user.group_invitations
       @subscribed_groups = current_user.subscribed_groups
-      @subscribers_groups = current_user.subscribed_users_groups.where(:private => false)
     end
   end
 

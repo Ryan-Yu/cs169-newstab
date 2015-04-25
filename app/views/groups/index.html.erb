@@ -1,5 +1,5 @@
 <div class="container">
-  <%= link_to 'Create Group', new_group_path if user_signed_in? %>
+  <%= render 'form' %>
   <div class="row" id="public-groups">
 <h3>Public Groups</h3>
     <% @groups.each do |group| %>

@@ -1,52 +1,7 @@
-<h1>
-  <strong>Group name:</strong>
-  <%= @group.group_name %>
-</h1>
+<% provide(:title, @group.group_name) %>
 
-<%= form_tag ("/groups/invite/" + @group.id.to_s) do %>
-  <label for="username">Username</label>:
-  <input id="username" name="username" type="text" /><br/>
-  <input name="commit" type="submit" value="Invite">
-<% end %>
+<h2> <%= @group.group_name %> </h2>
+<%= link_to "Post Article", new_article_path( :group_id => @group.id ) %>
 
-<h3> Post Article </h3>
-<%= form_for(@article) do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-      <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.hidden_field :group_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :initial_comment %><br>
-    <%= f.text_field :initial_comment %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
-<% end %>
-
-<h3> Articles </h3>
-<div class="container">
-  <div class="row">
-    <% @articles.each do |article| %>
-      <%= render article %>
-    <% end %>
-  </div>
-</div>
-<%= paginate @articles %>
+<%= render @articles %>

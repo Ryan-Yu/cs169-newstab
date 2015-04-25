@@ -1,4 +1,5 @@
-<%= form_for(@group) do |f| %>
+<% if user_signed_in? %>
+<%= form_for(@group, :html => {:class => 'form-inline'}) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -11,23 +12,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :group_name %><br>
+    <%= f.hidden_field :user_id %>
+    <%= f.label :name %>
     <%= f.text_field :group_name %>
-  </div>
-  <div class="field">
-    <%= f.label :private %><br>
+    <%= f.label :private? %>
     <%= f.check_box :private %>
-  </div>
-  <div class="field">
-    <%= f.label :subscribers_only %><br>
-    <%= f.check_box :subscribers_only %>
-  </div>
-  <div class="actions">
     <%= f.submit %>
-  </div>
+<% end %>
 <% end %>

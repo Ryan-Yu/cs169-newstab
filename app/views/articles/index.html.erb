@@ -1,12 +1,7 @@
 <% provide(:title, "Feed") %>
-
-<div class="row">
-  <% @articles.each do |article| %>
-      <%= render article %>
-  <% end %>
-</div>
-
+<%= render @articles %>
 <%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
+
 
 
 
