@@ -1,22 +1,32 @@
-<% if user_signed_in? %>
-<%= form_for(@group, :html => {:class => 'navbar-form navbar-search'}) do |f| %>
-  <% if @group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-      <% @group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="new-group-form">
+  <h3>Create New Group</h3>
+  <% if user_signed_in? %>
+    <%= form_for(@group, :html => {:class => 'navbar-form navbar-search'}) do |f| %>
+      <% if @group.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+    
+          <ul>
+          <% @group.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
+    
+      <%= f.hidden_field :user_id %>
+      <%= f.text_field :group_name, :class => 'form-control', :placeholder => "New group name" %>
+      
+      <br />
+      
+      <%= f.label :private?, "Private Group?" %>
+      <%= f.check_box :private, :class => 'checkbox-control' %>
+      
+      <br /><br />
+      
+      <%= f.submit 'Create Group', :class => "btn btn-custom" %>
+      
+    <% end %>
   <% end %>
 
-    <%= f.hidden_field :user_id %>
-    <%= f.label :name %>
-    <%= f.text_field :group_name %>
-    <%= f.label :private? %>
-    <%= f.check_box :private %>
-    <%= f.submit %>
-<% end %>
-<% end %>
+</div>

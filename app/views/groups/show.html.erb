@@ -26,6 +26,8 @@
   
   <%= render 'user_search_form' %>
   
+  <br />
+  
   <!-- Rendering of user search results -->
   <% if @user_search %>
     <div class="user-list">
@@ -35,6 +37,14 @@
             <!-- Link to invite each user in the search results (triggers the groups#invite action) -->
             <%= form_tag ("/groups/invite/" + @group.id.to_s) do %>
               <%= hidden_field_tag 'username', user.email %>
+
+              <!-- Only render a profile picture if the user's provider is Facebook (CSS -20px difference on bottom margin for article-show-picture) -->
+              <% if user.provider == "facebook" and !user.image.nil? and !user.image.empty? %>
+                <div class="article-show-picture">
+                  <%= image_tag user.image %>
+                </div>
+              <% end %>
+              
               <input name="commit" type="submit" value='Invite <%= user.first_name %> <%= user.last_name %>' class="btn btn-custom">
             <% end %>
           </li>

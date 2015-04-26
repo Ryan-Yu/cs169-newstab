@@ -1,10 +1,14 @@
+<div class="group-index-center">
+  <%= link_to 'Explore Public Groups', public_groups_path, :class => "btn btn-custom" %>
+</div>
+
 <div class="small-container">
   <%= render 'form' %>
+</div>
 
-  <br />
+<br />
 
-  <%= link_to 'Explore Public Groups', public_groups_path, :class => "btn btn-custom" %>
-  
+<div class="small-container">
   <% if user_signed_in? %>
     <div class="row" id="my-groups">
       <h3>My Created Groups</h3>
