@@ -577,3 +577,31 @@ h1 {
 .likes-form {
   margin: 15px 0 25px 0;
 }
+
+.article-show h1 a {
+  color: black;
+  transition: 1s;
+}
+
+.article-show h1 a:link {
+  text-decoration: none;
+  background-color: white;
+}
+
+.article-show h1 a:visited {
+  text-decoration: none;
+  background-color: white;
+}
+
+.article-show h1 a:hover {
+  text-decoration: none;
+  background-color: #ededed;
+}
+
+.article-show h1 a:active {
+  text-decoration: none;
+  background-color: white;
+}
+
+
+

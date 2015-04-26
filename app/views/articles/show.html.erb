@@ -11,7 +11,11 @@
     <% end %>
   </div>
   
-  <h1><%= @article.title %></h1>
+  <h1>
+    <a href=<%= @article.url %>>
+      <%= @article.title %>
+    </a>
+  </h1>
   
   <!-- Show photo only if it was pulled successfully with Pismo -->
   <% unless @article.photo.nil? or @article.photo.empty? %>
@@ -27,6 +31,10 @@
       <div class="article-content">
         <%= @article.content.html_safe unless @article.content.blank? %>
       </div>
+      
+      <%= @article.url %>
+      
+      <br />
       
       <%= link_to 'Edit', edit_article_path(@article) %> |
       <%= link_to 'Back', articles_path %>
@@ -48,16 +56,11 @@
           <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
           <%= @article.likes.size %>
         </span>
-
         <%= render 'likes/likes_form' %>
       </div>
       
       <%= link_to 'Edit Article', edit_article_path(@article) %>
       <%= link_to 'Destroy Article', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
-      
-      <br /><br />
-      
-      <%= @article.url %>
       
       <br /><br />
       
