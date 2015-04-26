@@ -1,16 +1,26 @@
-<!-- Rendered from Users Controller -->
+<div class="small-container">
 
-<!-- User for which we want to render following/followers for -->
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-
-<%= render 'shared/subscription_stats' %>
-
-<!-- @title is either 'Subscribing' or 'Subscribers' -->
-<h3><%= @title %></h3>
-
-<!-- Placeholder rendering of list of users -->
-<% if @users.any? %>
-  <% @users.each do |user| %>
-    <%= link_to "#{user.first_name} #{user.last_name}", user %>
+  <!-- Rendered from Users Controller -->
+  
+  <!-- User for which we want to render following/followers for -->
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  
+  <%= render 'shared/subscription_stats' %>
+  
+  <!-- @title is either 'Subscribing' or 'Subscribers' -->
+  <h3><%= @title %></h3>
+  
+  <!-- Placeholder rendering of list of users -->
+  <% if @users.any? %>
+    <div class="user-list">
+      <ul>
+        <% @users.each do |user| %>
+          <li>
+            <%= link_to "#{user.first_name} #{user.last_name}", user %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-<% end %>
+
+</div>

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   
   # Sets @users to the users that 'this' user is subscribing
   def subscribing
-    @title = "Subscribing"
+    @title = "Users that " + @user.first_name + " is subscribing to"
     # TODO: Paginate users?
     @users = @user.subscribing
     render 'show_subscribe'
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   
   # Sets @users to the users that are subscribers to 'this' user
   def subscribers
-    @title = "Subscribers"
+    @title = @user.first_name + "'s subscribers"
     # TODO: Paginate users?
     @users = @user.subscribers
     render 'show_subscribe'
