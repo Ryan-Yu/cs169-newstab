@@ -51,6 +51,9 @@ class GroupsController < ApplicationController
     if params[:search]
       @users = User.search(params[:search]).page(params[:page] || 1)
       @user_search = true
+      if @users.empty?
+        flash[:warning] = "Could not find any users with the search query \"#{params[:search]}\"."
+      end
     end
     
     respond_with(@group)
