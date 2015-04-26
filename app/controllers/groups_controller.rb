@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
     user = User.find_by_email(params[:username])
     if user
       GroupSubscription.create :user_id => user.id, :group_id => @group.id
-      flash[:success] = "Successfully added user #{user.email} to group #{@group.group_name}."
+      flash[:success] = "Successfully added #{user.first_name} #{user.last_name} to group #{@group.group_name}."
     else
       flash[:warning] = "Could not find user #{params[:username]}."
     end

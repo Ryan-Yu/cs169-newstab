@@ -14,6 +14,8 @@
    <br />
   <% end %>
   
+  <br />
+  
   <!-- If the current user is subscribed to the current group, then we want
       	     to give him/her the ability to add other users to the group -->
       	     
@@ -44,7 +46,7 @@
         
   <br /><br />
         
-  <%= link_to "Post Article", new_article_path( :group_id => @group.id ), :class => "logo-picture-button" %>
+  <%= link_to "Post article to group", new_article_path( :group_id => @group.id ), :class => "logo-picture-button" %>
   
   <%= render @articles %>
 </div>
