@@ -1,10 +1,12 @@
-<a href="<%= article_path(article) %>">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <div class="indiv-article">
-      <h4><%= article.title %></h4>
-      <hr />
-      Posted by <%= article.user.full_name %><br>
-      <%= article.likes.count %> Likes<br>
-    </div>
-  </div>
-</a>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <a href="<%= article_path(article) %>">
+  
+      <div class="indiv-article">
+        <h4><%= article.title %></h4>
+        <hr />
+        Posted by <%= article.user.full_name %><br>
+        <%= article.likes.count %> Likes<br>
+      </div>
+  
+  </a>
+</div>

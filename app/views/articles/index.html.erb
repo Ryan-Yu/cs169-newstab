@@ -1,7 +1,8 @@
 <% provide(:title, "Feed") %>
-<%= render @articles %>
-<%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
-
+<%= render 'articles' %>
+<div class=paginate-container>
+<%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm, centered" unless @articles.empty? %>
+</div>
 
 
 

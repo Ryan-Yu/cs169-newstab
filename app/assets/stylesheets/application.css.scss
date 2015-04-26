@@ -313,7 +313,7 @@ body {
 }
 
 .small-container h1 {
-  font-weight: 300; 
+  font-weight: 300;
 }
 
 .small-container .sign-in-form {
@@ -485,4 +485,19 @@ body {
 
 h1 {
   font-weight: 300;
+}
+
+.paginate-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.category-title {
+  width: 50%;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  padding: 1px 0 5px 0;
+  box-shadow: 0px 1px 1px #bebebe;
+  margin: 0 auto;
 }
