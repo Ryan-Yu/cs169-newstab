@@ -5,16 +5,22 @@ class ArticlesController < ApplicationController
   respond_to :html
 
   def index
-    if user_signed_in?
-      @articles = current_user.article_feed
-      # if there are too few articles on a user's feed (< 6), we want to display more articles
-      if (@articles.size < 6)
-        @articles = Article.order('created_at DESC').page(params[:page] || 1).per(12)
-      end
+    # User has searched by article tite
+    if params[:search]
+      @articles = Article.search(params[:search]).page(params[:page] || 1).per(12)
+    # User has not searched by article title, render index page as usual
     else
-      @articles = Article.all
+      if user_signed_in?
+        @articles = current_user.article_feed
+        # if there are too few articles on a user's feed (< 6), we want to display more articles
+        if (@articles.size < 6)
+          @articles = Article.order('created_at DESC').page(params[:page] || 1).per(12)
+        end
+      else
+        @articles = Article.all
+      end
+      @articles = @articles.page(params[:page] || 1).per(12)
     end
-    @articles = @articles.page(params[:page] || 1).per(12)
     @categories = Category.all
     respond_with(@articles)
   end

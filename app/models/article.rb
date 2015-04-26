@@ -26,4 +26,9 @@ class Article < ActiveRecord::Base
       self.datetime = doc.datetime
       self.photo = img
   end
+  
+  # Article title search functionality
+  def self.search(query)
+    where("title like ?", "%#{query}%")
+  end
 end

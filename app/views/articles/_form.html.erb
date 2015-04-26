@@ -30,9 +30,9 @@
     <div class="form-list-categories">
       <% unless @categories.nil? %>
         <% @categories.each do |t| %>
-          <%= t.name %>
-          &nbsp;
           <%= check_box_tag "categories[#{t.id}]", t.name %>
+          &nbsp;
+          <%= t.name %>
           <br />
         <% end %>
       <% end %>
