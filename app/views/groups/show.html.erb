@@ -1,27 +1,31 @@
-<% provide(:title, @group.group_name) %>
-
-<h2> <%= @group.group_name %> </h2>
-
-<% if @group.users.size > 0 %>
-  <h3>Users (<%= @group.users.size %>):</h3>
-<% else %>
-  <h3>No users.</h3>
-<% end %>
-
-<% @group.users.each do |user| %>
- <%= user.first_name %> <%= user.last_name %>
- <br />
-<% end %>
-
-<!-- If the current user is subscribed to the current group, then we want
-    	     to give him/her the ability to add other users to the group -->
-    	     
-<%= form_tag ("/groups/invite/" + @group.id.to_s) do %>
-  <label for="username">Email of user to add to group</label>:
-  <input id="username" name="username" type="text" /><br/>
-  <input name="commit" type="submit" value="Invite">
-<% end %>
-      
-<%= link_to "Post Article", new_article_path( :group_id => @group.id ) %>
-
-<%= render @articles %>
+<div class="small-container">
+  <% provide(:title, @group.group_name) %>
+  
+  <h1> <%= @group.group_name %> </h1>
+  
+  <% if @group.users.size > 0 %>
+    <h3>Users (<%= @group.users.size %>):</h3>
+  <% else %>
+    <h3>No users.</h3>
+  <% end %>
+  
+  <% @group.users.each do |user| %>
+   <%= user.first_name %> <%= user.last_name %>
+   <br />
+  <% end %>
+  
+  <!-- If the current user is subscribed to the current group, then we want
+      	     to give him/her the ability to add other users to the group -->
+      	     
+  <%= form_tag ("/groups/invite/" + @group.id.to_s) do %>
+    <label for="username">Email of user to add to group</label>:
+    <input id="username" name="username" type="text" /><br/>
+    <input name="commit" type="submit" value="Invite" class="btn btn-custom">
+  <% end %>
+  
+  <br /><br />
+        
+  <%= link_to "Post Article", new_article_path( :group_id => @group.id ), :class => "logo-picture-button" %>
+  
+  <%= render @articles %>
+</div>
