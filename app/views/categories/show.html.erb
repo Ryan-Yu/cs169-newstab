@@ -9,7 +9,7 @@
       <% end %>
     </div>
   </div>
-  <%= paginate @articles unless @articles.empty? %>
+  <%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @articles.empty? %>
 </body>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
