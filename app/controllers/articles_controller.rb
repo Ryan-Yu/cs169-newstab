@@ -40,6 +40,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comments = @article.comments.order('created_at DESC')
     @user = @article.user
     respond_with(@article)
   end
