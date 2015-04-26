@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
     @articles = @user.articles
     # TODO: Might need to change this?
-    @groups = @user.groups
+    @groups = @user.subscribed_groups
   end
   
   # Sets @users to the users that 'this' user is subscribing

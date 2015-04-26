@@ -1,4 +1,3 @@
-
 <div class="col-xs-6" style="background-color:lightblue; padding: 5px; display: table-cell; border: thin;">
   <a href="<%= group_path(group)%>">
     <div>
@@ -14,6 +13,7 @@
     	<%= form_tag ("/groups/unsubscribe/" + group.id.to_s) do %>
     	  <input name="commit" type="submit" value="Unsubscribe">
     	<% end %>
+    	     
   	<% else %>
     	<%= form_tag ("/groups/subscribe/" + group.id.to_s) do %>
     	  <input name="commit" type="submit" value="Subscribe">

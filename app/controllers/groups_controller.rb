@@ -19,17 +19,12 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  # Adds another user to a group
   def invite
     user = User.find_by_email(params[:username])
     if user
-      # TODO: This method does not exist
-      # TODO: Need to change the VERB for group subscriptions... because followings are called subscriptions too
-      if user.subscribes current_user
-        GroupInvitation.create :user_if => user.id, :group_id => @group.id
-        flash[:notice] = "Invitation has been sent"
-      else
-        flash[:notice] = "You can only invite subscribers"
-      end
+      GroupSubscription.create :user_id => user.id, :group_id => @group.id
+      flash[:notice] = "Successfully added user #{user.email} to group #{@group.group_name}"
     else
       flash[:notice] = "Could not find user #{params[:username]}"
     end
@@ -40,7 +35,11 @@ class GroupsController < ApplicationController
     @groups = Group.where(:private => false)
     if user_signed_in?
       @group = Group.new :user_id => current_user.id
+      
+      # This is JUST the groups that the user has made
       @my_groups = current_user.groups
+      
+      # This is JUST the groups that the user is subscribed to (NOT the groups that the user has made)
       @subscribed_groups = current_user.subscribed_groups
     end
   end
