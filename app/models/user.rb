@@ -89,11 +89,10 @@ class User < ActiveRecord::Base
   
   
   # Returns a user's article feed, which includes:
-  # (1) articles that the user has posted him/herself
-  # (2) articles that have been posted by users that the user is subscribed to
+  # (1) articles that have been posted by users that the user is subscribed to
   # TODO: We need to paginate or introduce infinite scroll for this
   def article_feed
-    Article.where("user_id IN (?) OR user_id = ?", subscribing_ids, self.id)
+    Article.where("user_id IN (?)", subscribing_ids)
   end
   
   def full_name
