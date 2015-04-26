@@ -17,14 +17,12 @@
   <!-- If the current user is subscribed to the current group, then we want
       	     to give him/her the ability to add other users to the group -->
       	     
-  <%= form_tag ("/groups/invite/" + @group.id.to_s) do %>
-    <label for="username">Email of user to add to group</label>:
-    <input id="username" name="username" type="text" /><br/>
-    <input name="commit" type="submit" value="Invite" class="btn btn-custom">
+  <%= form_tag "/groups/invite/" + @group.id.to_s, :class => 'navbar-form navbar-search' do %>
+    <%= text_field_tag :username, params[:username], :id => 'search_field', :class => 'form-control', :placeholder => 'Add user by email' %>
+    <%= submit_tag "Invite", :name => nil, :class => "btn btn-custom" %> 
   <% end %>
   
   <%= render 'user_search_form' %>
-  
   
   <!-- Rendering of user search results -->
   <% if @user_search %>
@@ -32,7 +30,7 @@
       <ul>
         <% @users.each do |user| %>
           <li>
-            <%#= link_to user.full_name, user %>
+            <!-- Link to invite each user in the search results (triggers the groups#invite action) -->
             <%= form_tag ("/groups/invite/" + @group.id.to_s) do %>
               <%= hidden_field_tag 'username', user.email %>
               <input name="commit" type="submit" value='Invite <%= user.first_name %> <%= user.last_name %>' class="btn btn-custom">
