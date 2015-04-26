@@ -23,8 +23,18 @@ class GroupsController < ApplicationController
   def invite
     user = User.find_by_email(params[:username])
     if user
-      GroupSubscription.create :user_id => user.id, :group_id => @group.id
-      flash[:success] = "Successfully added #{user.first_name} #{user.last_name} to group #{@group.group_name}."
+      # Try to find a group subscription with the same user id and group id.
+      # NOTE: This returns a LIST of subscriptions, so must check if its empty
+      subscription = GroupSubscription.where(:user_id => user.id, :group_id => @group.id)
+      
+      # if we could NOT find a matching subscription, then we can create it
+      if subscription.empty?
+        GroupSubscription.create :user_id => user.id, :group_id => @group.id
+        flash[:success] = "Successfully added #{user.first_name} #{user.last_name} to group #{@group.group_name}."
+      else
+        flash[:warning] = "#{user.first_name} #{user.last_name} is already in the group #{@group.group_name}."
+      end
+    # Could not find the user
     else
       flash[:warning] = "Could not find user #{params[:username]}."
     end
@@ -72,6 +82,8 @@ class GroupsController < ApplicationController
     p[:user_id] = current_user.id
     @group = Group.new(p)
     @group.save
+    # Add self to group.
+    GroupSubscription.create :user_id => current_user.id, :group_id => @group.id
     respond_with(@group)
   end
 
