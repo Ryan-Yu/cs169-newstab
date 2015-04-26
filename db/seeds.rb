@@ -21,11 +21,11 @@ User.create!(first_name:"Example",
 
 
 99.times do |n|
-  first_name  = Faker::Name.name
+  name  = Faker::Name.name
   email = "example-#{n+1}@gmail.com"
   password = "password"
-  User.create!(first_name: first_name,
-              last_name: "Dickface",
+  User.create!(first_name: name.split(' ')[0],
+              last_name: name.split(' ')[1],
               email: email,
               password: password,
               password_confirmation: password)
