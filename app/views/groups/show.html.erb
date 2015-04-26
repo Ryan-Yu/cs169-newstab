@@ -1,7 +1,7 @@
 <div class="small-container">
   <% provide(:title, @group.group_name) %>
   
-  <h1> <%= @group.group_name %> </h1>
+  <h1> Group: <%= @group.group_name %> </h1>
   
   <% if @group.users.size > 0 %>
     <h3>Users (<%= @group.users.size %>):</h3>
