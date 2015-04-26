@@ -25,9 +25,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:notice] = "Comment successfully created!"
+      flash[:success] = "Comment successfully created!"
     else
-      flash[:notice] = "Comment cannot be blank."
+      flash[:warning] = "Comment cannot be blank."
     end
     redirect_to @article
   end
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
   def destroy
     if @comment
       @comment.destroy
-      flash[:notice] = "Comment has been successfully deleted."
+      flash[:success] = "Comment has been successfully deleted."
     end
     redirect_to @article
   end
