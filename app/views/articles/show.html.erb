@@ -21,6 +21,7 @@
   <br />
   
   <div class="row">
+    <!-- Left column -->
     <div class="col-md-8">
       <!-- Article content -->
       <div class="article-content">
@@ -33,22 +34,23 @@
       <br /><br />
     </div>
     
+    <!-- Right coolumn -->
     <div class="col-md-4">
-      <!-- Display who posted the article -->
-      <div class="article-posted-by">
-        Posted <%= time_ago_in_words(@article.created_at) %> ago by: <a href=<%= user_path(@article.user.id) %>><%= @article.user.first_name %> <%= @article.user.last_name %></a>
+      <div class="article-show-user-picture">
+        <%= render 'users/user_picture' %>
+        <div class="article-posted-by">
+          Posted <%= time_ago_in_words(@article.created_at) %> ago by: <a href=<%= user_path(@article.user.id) %>><%= @article.user.first_name %> <%= @article.user.last_name %></a>
+        </div>
       </div>
       
-      <br />
-      
-      <strong>Number of Likes:</strong>
-      <%= @article.likes.size %>
-      
-      <br />
-      
-      <%= render 'likes/likes_form' %>
-      
-      <br /><br />
+      <div class="article-show-likes">
+        <span class="glyphicon-article-show">
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <%= @article.likes.size %>
+        </span>
+
+        <%= render 'likes/likes_form' %>
+      </div>
       
       <%= link_to 'Edit Article', edit_article_path(@article) %>
       <%= link_to 'Destroy Article', @article, method: :delete, data: { confirm: 'Are you sure?' } %>

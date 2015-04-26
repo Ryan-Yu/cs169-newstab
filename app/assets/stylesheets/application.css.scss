@@ -522,3 +522,58 @@ h1 {
     border-radius: 50%;
     display: block;
 }
+
+.indiv-article-username {
+  position: relative;
+  float: right;
+}
+
+.glyphicon-user {
+  color: #dedede;
+}
+
+.glyphicon-heart {
+  color: #DB4646;
+}
+
+.indiv-article-likes {
+  font-size: 14px;
+}
+
+.article-show-user-picture {
+  margin: -15px 0 20px 0;
+  text-align: center;
+}
+
+.article-posted-by {
+  margin-top: 15px;
+}
+
+.article-show-likes {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.glyphicon-article-show {
+  font-size: 40px;
+}
+
+.likes-button {
+  width: 60%;
+  padding: 12px 80px;
+  border-radius: 15px;
+  background-color: #DB6060;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  border: 1px solid #BFBFBF;
+}
+
+.likes-button:hover {
+  background-color: #DB4646
+}
+
+.likes-form {
+  margin: 15px 0 25px 0;
+}

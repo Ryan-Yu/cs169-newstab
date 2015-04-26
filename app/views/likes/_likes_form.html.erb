@@ -1,5 +1,7 @@
-<% unless signed_in? and current_user.likes? @article %>
-  <%= link_to "Like this article!", article_likes_path(@article), method: :post %>
-<% else %>
-  <%= link_to "Unlike this article!", article_like_path(@article, current_user.article_like(@article)), method: :delete %>
-<% end %>
+<div class="likes-form">
+  <% unless signed_in? and current_user.likes? @article %>
+    <%= link_to "Like this article!", article_likes_path(@article), method: :post, class: "likes-button" %>
+  <% else %>
+    <%= link_to "Unlike this article!", article_like_path(@article, current_user.article_like(@article)), method: :delete, class: "likes-button" %> %>
+  <% end %>
+</div>

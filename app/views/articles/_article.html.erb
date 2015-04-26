@@ -1,12 +1,27 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
   <a href="<%= article_path(article) %>">
-  
-      <div class="indiv-article">
-        <h4><%= article.title %></h4>
-        <hr />
-        Posted by <%= article.user.full_name %><br>
-        <%= article.likes.count %> Likes<br>
+    <div class="indiv-article">
+      <h4><%= article.title %></h4>
+      <hr />
+      
+      <!-- Display author and profile picture on right -->
+      <div class="indiv-article-username">
+        <%= article.user.full_name %>&nbsp;
+        <!-- Display user's facebook picture if authenticated with facebook, stock photo otherwise -->
+        <% if article.user.provider == "facebook" and !article.user.image.nil? and !article.user.image.empty? %>
+          <div class="circle">
+            <%= image_tag(article.user.image, :class => "fb-image-navbar") %>
+          </div>
+        <% else %>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <% end %>
       </div>
-  
+      
+      <!-- Display number of likes and heart icon -->
+      <div class="indiv-article-likes">
+        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        <%= article.likes.count %>
+      </div>
+    </div>
   </a>
 </div>

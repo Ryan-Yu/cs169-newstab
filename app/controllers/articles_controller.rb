@@ -40,6 +40,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @user = @article.user
     respond_with(@article)
   end
 
