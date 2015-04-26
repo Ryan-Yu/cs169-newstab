@@ -47,6 +47,12 @@ class GroupsController < ApplicationController
     @article = Article.new :group_id => @group.id
     @articles = @group.articles.page(params[:page] || 1)
     
+    # Handle searching of users (to invite to group)
+    if params[:search]
+      @users = User.search(params[:search]).page(params[:page] || 1)
+      @user_search = true
+    end
+    
     respond_with(@group)
   end
 
