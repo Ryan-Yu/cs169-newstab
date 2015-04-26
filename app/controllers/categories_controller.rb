@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def show
     @articles = @category.articles
-    @articles = @articles.page(params[:page] || 1).per(12)
+    @articles = @articles.page(params[:page] || 1)
     respond_with(@category)
   end
 

@@ -4,6 +4,8 @@
     <%= @user.first_name %> <%= @user.last_name %>
   </h1>
   
+  <%= @user.email %>
+  
   <!-- Subscriptions -->
   <%= render 'shared/subscription_stats' %>
   <%= render 'subscribe_form' if user_signed_in? %>

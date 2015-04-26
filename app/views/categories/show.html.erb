@@ -9,7 +9,7 @@
       <% end %>
     </div>
   </div>
-  <%= paginate @articles %>
+  <%= paginate @articles unless @articles.empty? %>
 </body>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |

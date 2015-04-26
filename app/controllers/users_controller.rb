@@ -4,11 +4,13 @@ class UsersController < ApplicationController
   
   def index
     if params[:search]
-      @users = User.search(params[:search]).page(params[:page] || 1).per(30)
+      @users = User.search(params[:search]).page(params[:page] || 1)
       @search_on = true
     else
       @users = User.all
-      @users = @users.page(params[:page] || 1).per(30)
+      unless @users.empty?
+        @users = @users.page(params[:page] || 1)
+      end
     end
   end
   

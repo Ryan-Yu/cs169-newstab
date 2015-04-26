@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
     if user_signed_in?
       GroupSubscription.create :user_id => current_user.id, :group_id => @group.id
     else
-      flash[:notice] = "Must sign in before subscribing"
+      flash[:warning] = "You must sign in before subscribing."
     end
     respond_with(@group)
   end
@@ -24,9 +24,9 @@ class GroupsController < ApplicationController
     user = User.find_by_email(params[:username])
     if user
       GroupSubscription.create :user_id => user.id, :group_id => @group.id
-      flash[:notice] = "Successfully added user #{user.email} to group #{@group.group_name}"
+      flash[:success] = "Successfully added user #{user.email} to group #{@group.group_name}."
     else
-      flash[:notice] = "Could not find user #{params[:username]}"
+      flash[:warning] = "Could not find user #{params[:username]}."
     end
     respond_with(@group)
   end
@@ -46,7 +46,7 @@ class GroupsController < ApplicationController
 
   def show
     @article = Article.new :group_id => @group.id
-    @articles = @group.articles.page(params[:page] || 1).per(12)
+    @articles = @group.articles.page(params[:page] || 1)
     
     respond_with(@group)
   end

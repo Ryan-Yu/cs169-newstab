@@ -7,19 +7,33 @@ class ArticlesController < ApplicationController
   def index
     # User has searched by article tite
     if params[:search]
-      @articles = Article.search(params[:search]).page(params[:page] || 1).per(12)
+      @articles = Article.search(params[:search])
+      unless @articles.empty?
+        @articles = @articles.page(params[:page] || 1)
+      end
     # User has not searched by article title, render index page as usual
     else
       if user_signed_in?
         @articles = current_user.article_feed
-        # if there are too few articles on a user's feed (< 6), we want to display more articles
-        if (@articles.size < 6)
-          @articles = Article.order('created_at DESC').page(params[:page] || 1).per(12)
+        
+        # if there are too few articles on a user's feed (< 2), we want to display more articles
+        if (@articles.size <= 1)
+          @articles = Article.order('created_at DESC')
+          
+          unless @articles.empty?
+            @articles = @articles.page(params[:page] || 1)
+          end
+        
+        # the current user's feed has more than 1 article  
+        else
+          @articles = @articles.page(params[:page] || 1)
         end
       else
         @articles = Article.all
+        if @articles.size > 0
+          @articles = @articles.page(params[:page] || 1)
+        end
       end
-      @articles = @articles.page(params[:page] || 1).per(12)
     end
     @categories = Category.all
     respond_with(@articles)
@@ -68,7 +82,7 @@ class ArticlesController < ApplicationController
       # Might need to change the location of this redirect
       redirect_to root_url
     else
-      flash[:notice] = "Invalid article."
+      flash[:warning] = "Invalid article."
       redirect_to new_article_path
     end
     
@@ -76,14 +90,14 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update(article_params)
-    flash[:notice] = "Article successfully updated."
+    flash[:success] = "Article successfully updated."
     respond_with(@article)
   end
 
   def destroy
     if @article
       @article.destroy
-      flash[:notice] = "Article successfully destroyed."
+      flash[:success] = "Article successfully destroyed."
     else
       flash[:warning] = "You do not have permission to delete this article."
     end

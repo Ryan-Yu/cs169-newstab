@@ -26,5 +26,5 @@
 </div>
 
 <div class="user-pagination">
-  <%= paginate @users, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
+  <%= paginate @users, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @users.empty? %>
 </div>
