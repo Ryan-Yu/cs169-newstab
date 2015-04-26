@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.image = auth.info.image
+      user.large_image = "http://graph.facebook.com/#{user.uid}/picture?type=large"
     end
   end
   

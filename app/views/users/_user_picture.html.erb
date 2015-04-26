@@ -1,0 +1,6 @@
+<!-- Display user's facebook picture if authenticated with facebook -->
+<% if @user.provider == "facebook" and !@user.large_image.nil? and !@user.large_image.empty? %>
+  <div class="user-circle">
+    <%= image_tag(@user.large_image, :class => "user-pic-large") %>
+  </div>
+<% end %>
