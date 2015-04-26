@@ -4,8 +4,6 @@
     <%= @user.first_name %> <%= @user.last_name %>
   </h1>
   
-  <%= @user.email %>
-  
   <!-- Subscriptions -->
   <%= render 'shared/subscription_stats' %>
   <%= render 'subscribe_form' if user_signed_in? %>
@@ -15,8 +13,12 @@
   </h3>
   
   <div class="row" id="my-groups">
-    <% @groups.each do |group| %>
-      <%= render group %>
+    <% if @groups.empty? %>
+      <%= @user.first_name %> is not subscribed to any groups.
+    <% else %>
+      <% @groups.each do |group| %>
+        <%= render group %>
+      <% end %>
     <% end %>
   </div>
   
