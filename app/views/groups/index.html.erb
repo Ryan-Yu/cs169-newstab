@@ -1,11 +1,11 @@
-<div class="container">
-  <%= render 'form' %>
-  <div class="row" id="public-groups">
-<h3>Public Groups</h3>
-    <% @groups.each do |group| %>
-      <%= render group %>
-    <% end %>
-    </div>
+<%= render 'form' %>
+<div class="row" id="public-groups">
+  <h3>Public Groups</h3>
+  <% @groups.each do |group| %>
+    <%= render group %>
+  <% end %>
+</div>
+
 <% if user_signed_in? %>
   <div class="row" id="my-groups">
     <h3>My Groups</h3>
@@ -13,6 +13,7 @@
       <%= render group %>
     <% end %>
   </div>
+  
   <div class="row" id="my-subscribed-groups">
     <h3>My Subscribed Groups</h3>
     <% @groups.each do |group| %>
@@ -20,4 +21,3 @@
     <% end %>
   </div>
 <% end %>
-</div>

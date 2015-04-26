@@ -14,8 +14,9 @@ class UsersController < ApplicationController
   
   # We display only a user's posted articles on his/her show page
   def show
-    # TODO: Paginate articles?
     @articles = @user.articles
+    # TODO: Might need to change this?
+    @groups = @user.groups
   end
   
   # Sets @users to the users that 'this' user is subscribing

@@ -12,7 +12,7 @@
       <!-- The subscribe form doesn't have any content other than the button, but still needs
       to send the subscribed_id to the controller, so we use a hidden_field_tag -->
       <%= hidden_field_tag :subscribed_id, @user.id %>
-      <%= f.submit "Subscribe" %>
+      <%= f.submit "Subscribe", :class => "btn btn-custom" %>
     <% end %>
     
   <% end %>

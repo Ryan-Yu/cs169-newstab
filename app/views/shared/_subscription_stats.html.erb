@@ -1,13 +1,13 @@
 <% @user ||= current_user %>
 
 <!-- Number of users that current user is subscribing to, and link to these other users -->
-<a href="<%= subscribing_user_path(@user) %>">
+<a href="<%= subscribing_user_path(@user) %>" class="btn btn-custom">
   <%= @user.subscribing.count %> subscribing
 </a>
 <br />
 
 <!-- Number of users that are subscribed to the current user, and link to these other users -->
-<a href="<%= subscribers_user_path(@user) %>">
+<a href="<%= subscribers_user_path(@user) %>" class="btn btn-custom">
   <%= @user.subscribers.count %> subscribers
 </a>
 
