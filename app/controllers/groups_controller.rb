@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, except: [:create, :new, :index]
+  before_action :set_group, except: [:create, :new, :index, :public_groups]
 
   respond_to :html
 
@@ -75,6 +75,11 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_with(@group)
+  end
+  
+  def public_groups
+    # By default, just display all public groups
+    @groups = Group.where(:private => false).order('group_name ASC')
   end
 
   private

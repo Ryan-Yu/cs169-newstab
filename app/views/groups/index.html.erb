@@ -1,23 +1,23 @@
-<%= render 'form' %>
-<div class="row" id="public-groups">
-  <h3>Public Groups</h3>
-  <% @groups.each do |group| %>
-    <%= render group %>
+<div class="small-container">
+  <%= render 'form' %>
+
+  <br />
+
+  <%= link_to 'Explore Public Groups', public_groups_path, :class => "btn btn-custom" %>
+  
+  <% if user_signed_in? %>
+    <div class="row" id="my-groups">
+      <h3>My Created Groups</h3>
+      <% @my_groups.each do |group| %>
+        <%= render group %>
+      <% end %>
+    </div>
+    
+    <div class="row" id="my-subscribed-groups">
+      <h3>My Subscribed Groups</h3>
+      <% @subscribed_groups.each do |group| %>
+        <%= render group %>
+      <% end %>
+    </div>
   <% end %>
 </div>
-
-<% if user_signed_in? %>
-  <div class="row" id="my-groups">
-    <h3>My Groups</h3>
-    <% @my_groups.each do |group| %>
-      <%= render group %>
-    <% end %>
-  </div>
-  
-  <div class="row" id="my-subscribed-groups">
-    <h3>My Subscribed Groups</h3>
-    <% @subscribed_groups.each do |group| %>
-      <%= render group %>
-    <% end %>
-  </div>
-<% end %>

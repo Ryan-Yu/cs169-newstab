@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'groups/subscribe/:id', to: 'groups#subscribe'
   post 'groups/unsubscribe/:id', to: 'groups#unsubscribe'
   post 'groups/invite/:id', to: 'groups#invite'
+  get 'public_groups', to: 'groups#public_groups'
   resources :articles
   resources :categories
   
