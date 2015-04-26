@@ -32,7 +32,6 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.where(:private => false)
     if user_signed_in?
       @group = Group.new :user_id => current_user.id
       
@@ -78,8 +77,14 @@ class GroupsController < ApplicationController
   end
   
   def public_groups
-    # By default, just display all public groups
-    @groups = Group.where(:private => false).order('group_name ASC')
+    if params[:search]
+      @groups = Group.search(params[:search]).page(params[:page] || 1)
+      @title = "Search Results"
+    else
+      # By default, just display all public groups
+      @groups = Group.where(:private => false).order('group_name ASC')
+      @title = "Explore Public Groups"
+    end
   end
 
   private

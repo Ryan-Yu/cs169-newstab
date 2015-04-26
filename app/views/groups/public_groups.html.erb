@@ -1,6 +1,10 @@
-<div class="row" id="public-groups">
-  <h3>Public Groups</h3>
-  <% @groups.each do |group| %>
-    <%= render group %>
-  <% end %>
+<div class="small-container">
+  <h1><%= @title %></h1>
+  
+  <%= render 'search' %>
+  <div class="row">
+    <% @groups.each do |group| %>
+      <%= render group %>
+    <% end %>
+  </div>
 </div>

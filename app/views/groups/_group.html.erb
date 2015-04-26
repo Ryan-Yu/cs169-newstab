@@ -1,22 +1,25 @@
-<div class="col-xs-6" style="background-color:lightblue; padding: 5px; display: table-cell; border: thin;">
+<div class="col-xs-12 col-sm-6">
   <a href="<%= group_path(group)%>">
     <div>
     <h3><%= group.group_name %></h3>
     <% if group.creator %>
       Created by: <%= group.creator.full_name %>
+      <br />
       Followers: <%= group.followers.to_s %>
     <% end %>
     </div>
   </a>
+  <br />
+  <!-- Subscribe/unsubscribe button (only rendered if user is signed in) -->
   <% if user_signed_in? %>
     <% if current_user.subscribed_group? group %>
     	<%= form_tag ("/groups/unsubscribe/" + group.id.to_s) do %>
-    	  <input name="commit" type="submit" value="Unsubscribe">
+    	  <input name="commit" type="submit" value="Unsubscribe" class="btn btn-custom">
     	<% end %>
     	     
   	<% else %>
     	<%= form_tag ("/groups/subscribe/" + group.id.to_s) do %>
-    	  <input name="commit" type="submit" value="Subscribe">
+    	  <input name="commit" type="submit" value="Subscribe" class="btn btn-custom">
     	<% end %>
   	<% end %>
 	<% end %>

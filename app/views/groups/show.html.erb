@@ -2,7 +2,11 @@
 
 <h2> <%= @group.group_name %> </h2>
 
-<h3>Users (<%= @group.users.size %>):</h3>
+<% if @group.users.size > 0 %>
+  <h3>Users (<%= @group.users.size %>):</h3>
+<% else %>
+  <h3>No users.</h3>
+<% end %>
 
 <% @group.users.each do |user| %>
  <%= user.first_name %> <%= user.last_name %>

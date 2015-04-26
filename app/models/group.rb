@@ -12,4 +12,9 @@ class Group < ActiveRecord::Base
     users.count
   end
   
+  # Article title search functionality
+  def self.search(query)
+    where("group_name like ?", "%#{query}%")
+  end
+  
 end
