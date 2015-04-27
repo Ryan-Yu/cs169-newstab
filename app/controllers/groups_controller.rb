@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, except: [:create, :new, :index, :public_groups]
-  before_action :authenticate_user!, except: [:index, :show, :public_groups]
+  before_action :authenticate_user!
   before_action :correct_user, only: :destroy
   respond_to :html
 
