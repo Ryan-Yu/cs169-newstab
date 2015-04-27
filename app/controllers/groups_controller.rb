@@ -5,16 +5,14 @@ class GroupsController < ApplicationController
   respond_to :html
 
   def subscribe
-    if user_signed_in?
-      GroupSubscription.create :user_id => current_user.id, :group_id => @group.id
-    else
-      flash[:warning] = "You must sign in before subscribing."
-    end
+    GroupSubscription.create :user_id => current_user.id, :group_id => @group.id
     respond_with(@group)
   end
   
   def unsubscribe
-    if user_signed_in?
+    if @group.creator.id == current_user.id
+      flash[:warning] = "You cannot unsubscribe from a group you have created."
+    else
       current_user.group_subscriptions.find_by_group_id(@group.id).destroy
     end
     redirect_to groups_path

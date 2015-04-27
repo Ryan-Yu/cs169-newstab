@@ -19,7 +19,7 @@
   <!-- If the current user is subscribed to the current group, then we want
       	     to give him/her the ability to add other users to the group -->
       	     
-  <%= form_tag "/groups/invite/" + @group.id.to_s, :class => 'navbar-form navbar-search' do %>
+  <%= form_tag "/groups/invite/" + @group.id.to_s, :class => 'navbar-form navbar-search' , :html => {:autocomplete => "off"} do %>
     <%= text_field_tag :username, params[:username], :id => 'search_field', :class => 'form-control', :placeholder => 'Add user by email' %>
     <%= submit_tag "Invite", :name => nil, :class => "btn btn-custom" %> 
   <% end %>
