@@ -58,5 +58,10 @@
         
   <%= link_to "Post article to group", new_article_path( :group_id => @group.id ), :class => "logo-picture-button" %>
   
-  <%= render @articles %>
+  <% if current_user.id == @group.creator.id %>
+    <br /><br /><br />
+    <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete-group-button" %>
+  <% end %>
 </div>
+
+<%= render @articles %>

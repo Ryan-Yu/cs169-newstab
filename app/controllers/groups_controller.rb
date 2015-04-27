@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, except: [:create, :new, :index, :public_groups]
-
+  before_action :authenticate_user!, except: [:index, :show, :public_groups]
+  before_action :correct_user, only: :destroy
   respond_to :html
 
   def subscribe
@@ -115,5 +116,10 @@ class GroupsController < ApplicationController
 
     def group_params
       params.require(:group).permit(:user_id, :group_name, :private, :subscribers_only)
+    end
+    
+    def correct_user
+      @group = current_user.groups.find_by(id: params[:id])
+      redirect_to root_url if @group.nil?
     end
 end
