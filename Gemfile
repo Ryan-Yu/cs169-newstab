@@ -28,6 +28,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 2.14.0'
   gem 'simplecov'
+  gem 'foreman'
 end
 
 # Use ActiveModel has_secure_password
@@ -49,7 +50,7 @@ group :test do
   gem 'byebug'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
-  
+  gem 'foreman'
 end
 
 group :production do
