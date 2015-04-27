@@ -8,11 +8,9 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
   
-  has_many :articles
-  has_many :likes
+  has_many :articles, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
-  
   
   # 'this' user is actively subscribed to other users
   # i.e. user.active_subscriptions.create(subscribed_id: another_user.id) means that
