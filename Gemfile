@@ -50,7 +50,6 @@ group :test do
   gem 'byebug'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
-  gem 'foreman'
 end
 
 group :production do
