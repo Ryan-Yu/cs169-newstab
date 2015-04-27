@@ -1,12 +1,13 @@
 class Group < ActiveRecord::Base
   
-  belongs_to :creator, class_name: "User", foreign_key: "user_id", dependent: :destroy
+  belongs_to :creator, class_name: "User", foreign_key: "user_id"
   
   has_many :group_subscriptions
   
   has_many :users, through: :group_subscriptions
 
-  has_many :articles
+  # Delete all of a group's articles when a group is destroyed
+  has_many :articles, dependent: :destroy
   
   def followers
     users.count

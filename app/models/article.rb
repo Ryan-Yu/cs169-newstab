@@ -6,6 +6,7 @@ class Article < ActiveRecord::Base
   validates_presence_of :user_id
   
   belongs_to :user
+  belongs_to :group
   has_many :comments
   has_many :likes
   
