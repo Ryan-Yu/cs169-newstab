@@ -14,37 +14,22 @@ class ArticlesController < ApplicationController
       
     # User has not searched by article title, render index page as usual
     else
+      @trending_articles = Article.order('likes_count DESC')
+      if @trending_articles.size > 0
+        @trending_articles = @trending_articles.page(params[:page] || 1)
+      end
+      
+      # If user is signed in, then we want to render curated articles and interested articles
       if user_signed_in?
         @articles = current_user.article_feed
         @interested_articles = current_user.relevant_articles
-        @trending_articles = Article.order('likes_count DESC')
         
-        # Perform pagination on interested articles and trending articles if necessary
-        if @interested_articles.size > 0
-          @interested_articles = @interested_articles.page(params[:page] || 1)
-        end
-        if @trending_articles.size > 0
-          @trending_articles = @trending_articles.page(params[:page] || 1)
-        end
-        
-        # if there are too few articles on a user's feed (< 2), we want to display more articles
-        if (@articles.size <= 1)
-          @articles = Article.order('created_at DESC')
-          
-          unless @articles.empty?
-            @articles = @articles.page(params[:page] || 1)
-          end
-        
-        # the current user's feed has more than 1 article  
-        else
-          @articles = @articles.page(params[:page] || 1)
-        end
-        
-      # User not signed in, just render everything
-      else
-        @articles = Article.all
+        # Perform pagination if necessary
         if @articles.size > 0
           @articles = @articles.page(params[:page] || 1)
+        end
+        if @interested_articles.size > 0
+          @interested_articles = @interested_articles.page(params[:page] || 1)
         end
       end
     end
