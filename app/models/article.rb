@@ -28,6 +28,10 @@ class Article < ActiveRecord::Base
       self.photo = img
   end
   
+  def number_of_likes
+    self.likes.count
+  end
+  
   # Article title search functionality
   def self.search(query)
     where("title like ?", "%#{query}%")

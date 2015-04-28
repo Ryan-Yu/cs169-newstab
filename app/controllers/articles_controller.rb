@@ -17,6 +17,9 @@ class ArticlesController < ApplicationController
       if user_signed_in?
         @articles = current_user.article_feed
         @interested_articles = current_user.relevant_articles
+        if @interested_articles.size > 0
+          @interested_articles = @interested_articles.page(params[:page] || 1)
+        end
         
         # if there are too few articles on a user's feed (< 2), we want to display more articles
         if (@articles.size <= 1)
@@ -30,6 +33,8 @@ class ArticlesController < ApplicationController
         else
           @articles = @articles.page(params[:page] || 1)
         end
+        
+      # User not signed in, just render everything
       else
         @articles = Article.all
         if @articles.size > 0

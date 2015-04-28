@@ -1,9 +1,44 @@
 <% provide(:title, "Feed") %>
-<%#= render 'articles' %>
-<%= render @interested_articles %>
-<div class="paginate-container">
-    <%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @articles.empty? %>
+
+<!-- Article feed (subscribers' articles) -->
+<div class="subscriber-article-feed">
+  <div class="category-title">
+    <h1>My subscribers' articles</h1>
+  </div>
+  
+  <div class="row">
+    <%= render @articles %>
+  </div>
+  
+  <div class="paginate-container">
+      <%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @articles.empty? %>
+  </div>
 </div>
 
 
+<br /><br /><br /><br />
+
+
+<div class="interest-article-feed">
+  <!-- Article feed (articles that are in categories the user is interested in) -->
+  <div class="category-title">
+    <h1>My recommended articles</h1>
+  </div>
+  
+  <div class="row">
+    <%= render @interested_articles %>
+  </div>
+  
+  <div class="paginate-container">
+      <%= paginate @interested_articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @interested_articles.empty? %>
+  </div>
+</div>
+
+
+<br /><br /><br /><br />
+
+
+<div class="trending-article-feed">
+  
+</div>
 
