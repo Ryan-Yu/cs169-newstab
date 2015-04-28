@@ -11,10 +11,12 @@ class ArticlesController < ApplicationController
       unless @articles.empty?
         @articles = @articles.page(params[:page] || 1)
       end
+      
     # User has not searched by article title, render index page as usual
     else
       if user_signed_in?
         @articles = current_user.article_feed
+        @interested_articles = current_user.relevant_articles
         
         # if there are too few articles on a user's feed (< 2), we want to display more articles
         if (@articles.size <= 1)

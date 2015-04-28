@@ -88,6 +88,11 @@ class User < ActiveRecord::Base
     subscribed_groups.include? group
   end
   
+  # Returns a collection of articles that have categories that align with the interested categories of this user
+  def relevant_articles
+    category_ids = self.interested_categories.map { |c| c.id }
+    Article.joins(:articles_categories).where("category_id in (?)", category_ids)
+  end
   
   # Returns a user's article feed, which includes:
   # (1) articles that have been posted by users that the user is subscribed to
