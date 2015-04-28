@@ -3,8 +3,14 @@
 <!-- Only display curated feed and interest feed if user signed in -->
 <% if user_signed_in? %>
 
+  <div class="index-buttons">
+    <button class="btn btn-custom" id="toggle-subscriber">Show Subscriber Feed</button>
+    <button class="btn btn-custom" id="toggle-recommended">Show Recommended Feed</button>
+    <button class="btn btn-custom" id="toggle-trending">Show Trending Feed</button>
+  </div>
+
   <!-- Article feed (subscribers' articles) -->
-  <div class="subscriber-article-feed">
+  <div id="subscriber-article-feed">
     <div class="category-title">
       <h1>My subscribers' articles</h1>
     </div>
@@ -18,11 +24,7 @@
     </div>
   </div>
   
-  
-  <br /><br /><br /><br />
-  
-  
-  <div class="interest-article-feed">
+  <div id="interest-article-feed">
     <!-- Article feed (articles that are in categories the user is interested in) -->
     <div class="category-title">
       <h1>My recommended articles</h1>
@@ -37,12 +39,9 @@
     </div>
   </div>
   
-  
-  <br /><br /><br /><br />
-
 <% end %>
 
-<div class="trending-article-feed">
+<div id="trending-article-feed">
   <!-- Likes feed (articles sorted by number of likes) -->
   <div class="category-title">
     <h1>Trending articles</h1>

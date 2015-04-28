@@ -15,3 +15,77 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require_tree .
+
+$(document).ready(function(){
+  var subscriberFeed = false;
+  var interestFeed = false;
+  var trendingFeed = false;
+  
+  $("#subscriber-article-feed").hide();
+  $("#interest-article-feed").hide();
+  // $("#trending-article-feed").hide();
+  
+  $("#toggle-subscriber").click(function(){
+    subscriberFeed = true;
+    interestFeed = false;
+    trendingFeed = false;
+    
+    if (subscriberFeed) {
+      $("#subscriber-article-feed").show();
+    } else {
+      $("#subscriber-article-feed").hide();
+    }
+    if (interestFeed) {
+      $("#interest-article-feed").show();
+    } else {
+      $("#interest-article-feed").hide();
+    }
+    if (trendingFeed) {
+      $("#trending-article-feed").show();
+    } else {
+      $("#trending-article-feed").hide();
+    }
+  });
+  
+  $("#toggle-recommended").click(function(){
+    subscriberFeed = false;
+    interestFeed = true;
+    trendingFeed = false;
+    if (subscriberFeed) {
+      $("#subscriber-article-feed").show();
+    } else {
+      $("#subscriber-article-feed").hide();
+    }
+    if (interestFeed) {
+      $("#interest-article-feed").show();
+    } else {
+      $("#interest-article-feed").hide();
+    }
+    if (trendingFeed) {
+      $("#trending-article-feed").show();
+    } else {
+      $("#trending-article-feed").hide();
+    }
+  });
+  
+  $("#toggle-trending").click(function(){
+    subscriberFeed = false;
+    interestFeed = false;
+    trendingFeed = true;
+    if (subscriberFeed) {
+      $("#subscriber-article-feed").show();
+    } else {
+      $("#subscriber-article-feed").hide();
+    }
+    if (interestFeed) {
+      $("#interest-article-feed").show();
+    } else {
+      $("#interest-article-feed").hide();
+    }
+    if (trendingFeed) {
+      $("#trending-article-feed").show();
+    } else {
+      $("#trending-article-feed").hide();
+    }
+  });
+});
