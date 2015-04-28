@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
   # i.e. user.subscribers.include?(other_user) checks whether other_user is subscribing to 'this' user
   has_many :subscribers, through: :passive_subscriptions, source: :subscriber
   
+  has_and_belongs_to_many :interested_categories, :class_name => "Category", :join_table => :categories_users
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

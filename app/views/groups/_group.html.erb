@@ -14,12 +14,12 @@
   <% if user_signed_in? %>
     <% if current_user.subscribed_group? group %>
     	<%= form_tag ("/groups/unsubscribe/" + group.id.to_s) do %>
-    	  <input name="commit" type="submit" value="Unsubscribe" class="btn btn-custom">
+    	  <input name="commit" type="submit" value="Unsubscribe from this group" class="btn btn-custom">
     	<% end %>
     	     
   	<% else %>
     	<%= form_tag ("/groups/subscribe/" + group.id.to_s) do %>
-    	  <input name="commit" type="submit" value="Subscribe" class="btn btn-custom">
+    	  <input name="commit" type="submit" value="Subscribe to this group" class="btn btn-custom">
     	<% end %>
   	<% end %>
 	<% end %>

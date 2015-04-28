@@ -1,11 +1,58 @@
 <div class="small-container">
-
   <%= render 'user_picture' %>
-
   <h1>
     <%= @user.first_name %> <%= @user.last_name %>
   </h1>
+</div>
+
+<br />
+
+<div class="small-container">
+  <h4>
+    Interested categories (<%= @user.interested_categories.size %>):<br />
+  </h4>
+  <div class="interested-categories">
+    <% if @user.interested_categories.empty? %>
+      No categories selected.
+    <% else %>
+      <% @user.interested_categories.each do |category| %>
+        <%= category.name %><br />
+      <% end %>
+    <% end %>
+  </div>
   
+  <!-- Only let the user select interested categories if the signed in user is actually the user who is on the show page... -->
+  <% if current_user.id == @user.id %>
+    <h4>
+      Choose which article categories you are interested in:
+    </h4>
+    
+    <div class="form-list-categories">
+      <%= form_for @user, :url => {:action => "select_interested_categories", :params => {id: @user.id}}, :method => "post" do |f| %>
+        <% unless @categories.nil? %>
+          <% @categories.each do |t| %>
+            <%= check_box_tag "categories[#{t.id}]", t.name %>
+            &nbsp;
+            <%= t.name %>
+            <br />
+          <% end %>
+        <% end %>
+        <br />
+        <%= f.submit "Set Interested Categories", :class => "logo-picture-button" %>
+      <% end %>
+    </div>
+  <% end %>
+  
+</div>
+    
+<br /> 
+    
+<div class="small-container">
+  <h3>
+    <%= @user.first_name %>'s Subscription Information
+  </h3>
+  
+  <br />
   <!-- Subscriptions -->
   <%= render 'shared/subscription_stats' %>
   <%= render 'subscribe_form' if user_signed_in? %>
@@ -27,4 +74,5 @@
 </div>
 
 <%= render @articles %>
+
 

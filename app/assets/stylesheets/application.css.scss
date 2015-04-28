@@ -437,7 +437,7 @@ body {
 .form-list-categories {
   text-align: left;
   margin-left: 25%;
-  line-height: 18px;
+  line-height: 22px;
 }
 
 // Account for padding of article-show div
@@ -646,4 +646,12 @@ h1 {
 
 .delete-group-button:hover {
   background-color: #DB4646
+}
+
+.left-align-user-show {
+  text-align: left;
+}
+
+.interested-categories {
+  font-size: 15px;
 }

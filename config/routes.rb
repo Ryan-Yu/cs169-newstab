@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :articles
   resources :categories
   
+  match 'users/select_interested_categories' => 'users#select_interested_categories', via: :post
+
   # We must declare a path prefix for devise user operations to avoid conflicts with CRUD user operations
   # Source: https://github.com/plataformatec/devise/wiki/How-To:-Manage-users-through-a-CRUD-interface
   devise_for :users, :path_prefix => "profile", :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
     
     collection do
       get :search_for
+      
     end
   end
   
