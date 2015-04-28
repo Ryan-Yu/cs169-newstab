@@ -29,21 +29,23 @@ $(document).ready(function(){
     subscriberFeed = true;
     interestFeed = false;
     trendingFeed = false;
-    
+    if (!subscriberFeed) {
+      $("#subscriber-article-feed").fadeOut(350);
+    }
+    if (!interestFeed) {
+      $("#interest-article-feed").fadeOut(350);
+    }
+    if (!trendingFeed) {
+      $("#trending-article-feed").fadeOut(350);
+    }
     if (subscriberFeed) {
-      $("#subscriber-article-feed").show();
-    } else {
-      $("#subscriber-article-feed").hide();
+      $("#subscriber-article-feed").delay(350).fadeIn(350);
     }
     if (interestFeed) {
-      $("#interest-article-feed").show();
-    } else {
-      $("#interest-article-feed").hide();
+      $("#interest-article-feed").delay(350).fadeIn(350);
     }
     if (trendingFeed) {
-      $("#trending-article-feed").show();
-    } else {
-      $("#trending-article-feed").hide();
+      $("#trending-article-feed").delay(350).fadeIn(350);
     }
   });
   
@@ -51,20 +53,23 @@ $(document).ready(function(){
     subscriberFeed = false;
     interestFeed = true;
     trendingFeed = false;
+    if (!subscriberFeed) {
+      $("#subscriber-article-feed").fadeOut(350);
+    }
+    if (!interestFeed) {
+      $("#interest-article-feed").fadeOut(350);
+    }
+    if (!trendingFeed) {
+      $("#trending-article-feed").fadeOut(350);
+    }
     if (subscriberFeed) {
-      $("#subscriber-article-feed").show();
-    } else {
-      $("#subscriber-article-feed").hide();
+      $("#subscriber-article-feed").delay(350).fadeIn(350);
     }
     if (interestFeed) {
-      $("#interest-article-feed").show();
-    } else {
-      $("#interest-article-feed").hide();
+      $("#interest-article-feed").delay(350).fadeIn(350);
     }
     if (trendingFeed) {
-      $("#trending-article-feed").show();
-    } else {
-      $("#trending-article-feed").hide();
+      $("#trending-article-feed").delay(350).fadeIn(350);
     }
   });
   
@@ -72,20 +77,23 @@ $(document).ready(function(){
     subscriberFeed = false;
     interestFeed = false;
     trendingFeed = true;
+    if (!subscriberFeed) {
+      $("#subscriber-article-feed").fadeOut(350);
+    }
+    if (!interestFeed) {
+      $("#interest-article-feed").fadeOut(350);
+    }
+    if (!trendingFeed) {
+      $("#trending-article-feed").fadeOut(350);
+    }
     if (subscriberFeed) {
-      $("#subscriber-article-feed").show();
-    } else {
-      $("#subscriber-article-feed").hide();
+      $("#subscriber-article-feed").delay(350).fadeIn(350);
     }
     if (interestFeed) {
-      $("#interest-article-feed").show();
-    } else {
-      $("#interest-article-feed").hide();
+      $("#interest-article-feed").delay(350).fadeIn(350);
     }
     if (trendingFeed) {
-      $("#trending-article-feed").show();
-    } else {
-      $("#trending-article-feed").hide();
+      $("#trending-article-feed").delay(350).fadeIn(350);
     }
   });
 });
