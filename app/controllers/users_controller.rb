@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       @users = User.search(params[:search]).page(params[:page] || 1)
       @search_on = true
     else
-      @users = User.all
+      @users = User.order('last_name ASC')
       unless @users.empty?
         @users = @users.page(params[:page] || 1)
       end
