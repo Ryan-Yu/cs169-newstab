@@ -17,8 +17,14 @@ class ArticlesController < ApplicationController
       if user_signed_in?
         @articles = current_user.article_feed
         @interested_articles = current_user.relevant_articles
+        @trending_articles = Article.order('likes_count DESC')
+        
+        # Perform pagination on interested articles and trending articles if necessary
         if @interested_articles.size > 0
           @interested_articles = @interested_articles.page(params[:page] || 1)
+        end
+        if @trending_articles.size > 0
+          @trending_articles = @trending_articles.page(params[:page] || 1)
         end
         
         # if there are too few articles on a user's feed (< 2), we want to display more articles
