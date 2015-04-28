@@ -2,14 +2,9 @@
 
 <!-- Only display curated feed and interest feed if user signed in -->
 <% if user_signed_in? %>
-
   <%= render 'toggle_buttons' %>
-
   <%= render 'subscriber_article_feed' %>
-  
   <%= render 'interest_article_feed' %>
-  
 <% end %>
-
 <%= render 'trending_article_feed' %>
 
