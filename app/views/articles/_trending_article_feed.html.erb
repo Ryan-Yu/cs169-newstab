@@ -2,13 +2,20 @@
   <!-- Likes feed (articles sorted by number of likes) -->
   <div class="category-title">
     <h1>Trending articles</h1>
+    <% if @trending_articles.nil? or @trending_articles.empty? %>
+      There are no articles to display.
+    <% end %>
+    <br />
+    <br />
   </div>
   
   <div class="row">
-    <%= render @trending_articles %>
+    <% unless @trending_articles.nil? or @trending_articles.empty? %>
+      <%= render @trending_articles %>
+    <% end %>
   </div>
   
   <div class="paginate-container">
-      <%= paginate @trending_articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @trending_articles.empty? %>
+      <%= paginate @trending_articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless (@trending_articles.nil? or @trending_articles.empty?) %>
   </div>
 </div>

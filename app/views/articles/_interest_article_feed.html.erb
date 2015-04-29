@@ -2,7 +2,7 @@
   <!-- Article feed (articles that are in categories the user is interested in) -->
   <div class="category-title">
     <h1>My recommended articles</h1>
-    <% if @interested_articles.empty? %>
+    <% if @interested_articles.nil? or @interested_articles.empty? %>
       There are no articles to display.
     <% end %>
     <br />
@@ -10,10 +10,12 @@
   </div>
   
   <div class="row">
-    <%= render @interested_articles %>
+    <% unless @interested_articles.nil? or @interested_articles.empty? %>
+      <%= render @interested_articles %>
+    <% end %>
   </div>
   
   <div class="paginate-container">
-      <%= paginate @interested_articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @interested_articles.empty? %>
+      <%= paginate @interested_articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless (@interested_articles.nil? or @interested_articles.empty?) %>
   </div>
 </div>
