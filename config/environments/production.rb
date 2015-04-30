@@ -69,8 +69,8 @@ Rails.application.configure do
   
   config.action_mailer.smtp_settings = {
     :user_name => 'newstab123@gmail.com',
-    :password => 'Qc4kMsN7VGm4_6UeZu4G5g',
-    :domain => 'cs169-newstab-ryan-yu.c9.io',
+    :password => 'uO9O40SStAbrzhmvWZDeTQ',
+    :domain => 'thawing-brook-1019.herokuapp.com',
     :address => 'smtp.mandrillapp.com',
     :port => 587,
     :authentication => :plain,
