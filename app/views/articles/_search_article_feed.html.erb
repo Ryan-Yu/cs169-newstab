@@ -1,0 +1,14 @@
+<div class="category-title">
+  <h1>Search Results</h1>
+  <% if @articles.empty? %>
+    There are no articles to display.
+  <% end %>
+</div>
+
+<div class="row">
+  <%= render @articles %>
+</div>
+
+<div class="paginate-container">
+    <%= paginate @articles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" unless @articles.empty? %>
+</div>

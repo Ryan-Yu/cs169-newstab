@@ -1,10 +1,14 @@
 <% provide(:title, "Feed") %>
 
-<!-- Only display curated feed and interest feed if user signed in -->
-<% if user_signed_in? %>
-  <%= render 'toggle_buttons' %>
-  <%= render 'subscriber_article_feed' %>
-  <%= render 'interest_article_feed' %>
+<% if @search_on %>
+  <%= render 'search_article_feed' %>
+<% else %>
+  <!-- Only display curated feed and interest feed if user signed in -->
+  <% if user_signed_in? %>
+    <%= render 'toggle_buttons' %>
+    <%= render 'subscriber_article_feed' %>
+    <%= render 'interest_article_feed' %>
+  <% end %>
+  <%= render 'trending_article_feed' %>
 <% end %>
-<%= render 'trending_article_feed' %>
 

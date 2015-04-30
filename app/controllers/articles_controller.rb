@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   def index
     # User has searched by article tite
     if params[:search]
+      @search_on = true
       @articles = Article.search(params[:search])
       unless @articles.empty?
         @articles = @articles.page(params[:page] || 1)
@@ -14,6 +15,7 @@ class ArticlesController < ApplicationController
       
     # User has not searched by article title, render index page as usual
     else
+      @search_on = false
       @trending_articles = Article.order('likes_count DESC')
       if @trending_articles.size > 0
         @trending_articles = @trending_articles.page(params[:page] || 1)

@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(document).ready(function(){
+
   var subscriberFeed = false;
   var interestFeed = false;
   var trendingFeed = false;
