@@ -29,7 +29,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'simplecov'
   gem 'foreman'
-  gem 'mandrill-rails'
+  # gem 'mandrill-rails'
 end
 
 # Use ActiveModel has_secure_password
