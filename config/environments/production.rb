@@ -68,14 +68,13 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
   
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 25,
-    domain: ENV["gmail.com"],
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["newstab123@gmail.com"],
-    password: ENV["passw0rd_fun"],
-    ssl:  true 
+    :user_name => 'newstab123@gmail.com',
+    :password => 'Qc4kMsN7VGm4_6UeZu4G5g',
+    :domain => 'cs169-newstab-ryan-yu.c9.io',
+    :address => 'smtp.mandrillapp.com',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 
 # config.action_mailer.smtp_settings = {
