@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
   before_action :set_group, except: [:create, :new, :index, :public_groups]
   before_action :authenticate_user!
-  before_action :correct_user, only: [:destroy, :show]
+  before_action :correct_user, only: [:destroy]
+  before_action :in_group_user, only: [:show]
   respond_to :html
 
   def subscribe
@@ -118,9 +119,14 @@ class GroupsController < ApplicationController
     
     def correct_user
       @group = current_user.groups.find_by(id: params[:id])
-      if @group.nil
+      redirect_to root_url if @group.nil?
+    end
+    
+    def in_group_user
+      @group = current_user.subscribed_groups.find_by(id: params[:id])
+      if @group.nil?
         flash[:notice] = "You do not have permission to do this."
-        redirect_to root_url
+        redirect_to groups_path
       end
     end
 end
