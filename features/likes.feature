@@ -1,5 +1,5 @@
 @omniauth
-Feature: Features
+Feature: Likes
  
   As a user
   So that I can help distinguish good articles
@@ -14,6 +14,7 @@ Feature: Features
 
 @javascript
 Scenario: an unauthenticated user cannot like an article
+  Given I press "Hello"
   And I follow "Sign out"
   And I am on the show page for article "fake_url"
   And I follow "Like this article!"
@@ -25,19 +26,20 @@ Scenario: an authenticated user can like an article
   And I am on the show page for article "fake_url"
   And I follow "Like this article!"
   And I should be on the show page for article "fake_url"
-  Then I should see "Number of Likes: 1"
+  Then I should see "1"
   Then I should see "Unlike this article!"
   And I should not see "Like this article!"
 
 @javascript
 Scenario: a user cannot unlike articles they did not like
+  Given I press "Hello"
   Given I follow "Sign out"
   And the following likes exist:
     | user_id  | article_id  |
     | 1        | 1           |
   And another user is signed in
   And I am on the show page for article by id "1"
-  Then I should see "Number of Likes: 1"
+  Then I should see "1"
   And I should see "Like this article!"
   But I should not see "Unlike this article!"
 
@@ -46,8 +48,8 @@ Scenario: a user can unlike articles they liked
   And I am on the show page for article "fake_url"
   And I follow "Like this article!"
   And I should be on the show page for article "fake_url"
-  Then I should see "Number of Likes: 1"
+  Then I should see "1"
   Then I should see "Unlike this article!"
   And I should not see "Like this article!"
   And I follow "Unlike this article!"
-  Then I should see "Number of Likes: 0"
+  Then I should see "0"
