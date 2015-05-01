@@ -25,6 +25,16 @@ Feature: GroupArticles
     And I fill in "What do you want to say about this article?" with "Sport"
     And I press "Create Article"
     And I visit the group page for "BenGroup"
+    
+  Scenario: I can search for public groups
+    Given I am on the homepage
+    When I follow "Groups"
+    And I follow "Explore Public Groups"
+    And I fill in "group_search_field" with "BenGroup"
+    And I press "Search for Groups"
+    Then I should see "Search Results"
+    And I should see "BenGroup"
+    
 
 
 
