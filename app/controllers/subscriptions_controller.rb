@@ -7,6 +7,7 @@ class SubscriptionsController < ApplicationController
     user = User.find(params[:subscribed_id])
     # helper method defined in user model
     current_user.subscribe(user)
+    user.send_notification("#{current_user.first_name} #{current_user.last_name} has subscribed to you!", "users/#{current_user.id}")
     redirect_to user
   end
 

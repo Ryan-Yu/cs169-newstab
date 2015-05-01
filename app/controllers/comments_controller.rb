@@ -24,7 +24,13 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(comment_params)
     @comment.user_id = current_user.id
 
+    # When a comment is created, send a notification to the author of the article that the comment belongs to,
+    # unless the comment author is the same person as the article author
     if @comment.save
+      unless @article.user_id == current_user.id
+        User.find_by_id(@article.user_id).send_notification("#{User.find_by_id(@comment.user_id).first_name} #{User.find_by_id(@comment.user_id).last_name} has commented on your article #{@article.title}!", "articles/#{@article.id}")
+      end
+      
       flash[:success] = "Comment successfully created!"
     else
       flash[:warning] = "Comment cannot be blank."
