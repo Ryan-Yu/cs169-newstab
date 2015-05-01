@@ -32,7 +32,7 @@ Feature: Subscriptions
     And I follow "All Users"
     And I follow "Hello1 World1"
     Then I follow "0 subscribing"
-    Then I should see "Subscribing"
+    Then I should see "Users that Hello1 is subscribing to"
     And I should see "Hello1 World1"
   
   Scenario: a user should be able to see what another user is subscribed to
@@ -40,5 +40,5 @@ Feature: Subscriptions
     And I follow "All Users"
     And I follow "Hello1 World1"
     Then I follow "0 subscribers"
-    Then I should see "Subscribers"
+    Then I should see "Hello1's subscribers"
     And I should see "Hello1 World1"
