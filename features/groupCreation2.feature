@@ -15,7 +15,6 @@ Feature: GroupCreations
       | groupname   | privacy_level |
       | Public      | public        |
       | Private     | private       |
-      | Subscribers | subscribers_only |
     And I am signed in as "Ben"
     And I am on the homepage
   
