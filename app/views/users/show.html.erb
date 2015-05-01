@@ -27,20 +27,20 @@
       Choose which article categories you are interested in:
     </h4>
     
-    <div class="form-list-categories">
-      <%= form_for @user, :url => {:action => "select_interested_categories", :params => {id: @user.id}}, :method => "post" do |f| %>
-        <% unless @categories.nil? %>
-          <% @categories.each do |t| %>
-            <%= check_box_tag "categories[#{t.id}]", t.name %>
-            &nbsp;
-            <%= t.name %>
-            <br />
+    <%= form_for @user, :url => {:action => "select_interested_categories", :params => {id: @user.id}}, :method => "post" do |f| %>
+      <div class="form-list-categories">
+          <% unless @categories.nil? %>
+            <% @categories.each do |t| %>
+              <%= check_box_tag "categories[#{t.id}]", t.name %>
+              &nbsp;
+              <%= t.name %>
+              <br />
+            <% end %>
           <% end %>
-        <% end %>
-        <br />
-        <%= f.submit "Set Interested Categories", :class => "logo-picture-button" %>
-      <% end %>
-    </div>
+          <br />
+      </div>
+      <%= f.submit "Set Interested Categories", :class => "logo-picture-button" %>
+    <% end %>
   <% end %>
   
 </div>

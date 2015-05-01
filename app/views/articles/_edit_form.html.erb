@@ -1,0 +1,49 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :url, :class => "sign-in-form", :placeholder => "Article URL" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :title, :class => "sign-in-form", :placeholder => "Article title" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :content, :class => "article-body-form", :placeholder => "Article body" %>
+  </div>
+  
+  <div class="field">
+    <%= f.hidden_field :group_id %>
+  </div>
+  
+  <br />
+  
+    <i>Select one or more categories for article:</i><br /><br />
+    <!-- Renders selected categories as a hash: {"1"=>"Sports", "3"=>"Fashion", "4"=>"World"} -->
+    
+    <div class="form-list-categories">
+      <% unless @categories.nil? %>
+        <% @categories.each do |t| %>
+          <%= check_box_tag "categories[#{t.id}]", t.name %>
+          &nbsp;
+          <%= t.name %>
+          <br />
+        <% end %>
+      <% end %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit :class => "logo-picture-button" %>
+    </div>
+<% end %>
