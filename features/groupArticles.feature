@@ -33,7 +33,7 @@ Feature: GroupArticles
     And I fill in "group_search_field" with "BenGroup"
     And I press "Search for Groups"
     Then I should see "Search Results"
-    And I should see "BenGroup"
+
     
 
 
