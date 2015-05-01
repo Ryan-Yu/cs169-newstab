@@ -12,28 +12,25 @@ Feature: Articles
 
 @javascript 
 Scenario: a signed in user can post an article
-  Then I should see "Sign out"
-  Then I should see "New Article"
   Then I should see "Hello"
-  When I follow "New Article"
-  And I fill in "Url" with "Hello_World_Article_URL.com"
-  And I fill in "Initial comment" with "My first comment"
+  When I follow "new-article-icon"
+  And I fill in "Article URL" with "Hello_World_Article_URL.com"
+  And I fill in "What do you want to say about this article?" with "My first comment"
   And I press "Create Article"
   Then I should see "Article created!"
   Then article url "Hello_World_Article_URL.com" should exist
   
 Scenario: a signed in user can not post an invalid article
-  Then I should see "Sign out"
-  Then I should see "New Article"
   Then I should see "Hello"
-  When I follow "New Article"
-  And I fill in "Url" with "Hello_World_Article_URL.com"
+  When I follow "new-article-icon"
+  And I fill in "Article URL" with "Hello_World_Article_URL.com"
   And I press "Create Article"
   Then I should see "Invalid article."
-  And I should see "New article"
+  And I should see "New Article"
 
 Scenario: a user should be able to log out
   Then I am on the homepage
+  And I press "Hello"
   And I follow "Sign out"
   Then I should not see "Sign out"
   Then I should see "Sign up"
@@ -78,6 +75,6 @@ Scenario: a user can edit his article
     | 2        | cool_news_article.com                  | The description for the next big startup.   |
   Then I am on the show page for article "cool_news_article.com"
   And I follow "Edit Article"
-  And I fill in "Initial comment" with "I changed my comment."
+  And I fill in "What do you want to say about this article?" with "I changed my comment."
   And I press "Update Article"
   Then I should see "Article successfully updated."
