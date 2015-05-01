@@ -27,6 +27,17 @@ Scenario: a signed in user can not post an invalid article
   And I press "Create Article"
   Then I should see "Invalid article."
   And I should see "New Article"
+  
+Scenario: a user is able to search for an article
+  Given the following articles exist:
+  | user_id  | url                                        | initial_comment                             | title               |
+  | 1        | cool_news_article.com                      | The description for the next big startup.   | Phish               |
+  And I am on the homepage
+  And I fill in "search_field" with "Phish"
+  Then I press "Search"
+  Then I should see "Phish"
+  And I should see "Search Results"
+
 
 Scenario: a user should be able to log out
   Then I am on the homepage
