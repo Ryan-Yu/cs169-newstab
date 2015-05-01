@@ -17,6 +17,7 @@ Scenario: an unauthenticated user can see comments and who posted them
   Given the following comments exist:
     | user_id  | article_id  | body                             |
     | 1        | 1           | Some cool comment I want to add  |
+  And I press "Hello"
   And I follow "Sign out"
   And I am on the show page for article "fake_url"
   Then I should see "Some cool comment I want to add"
@@ -26,6 +27,7 @@ Scenario: an unauthenticated user can see comments and who posted them
 
 @javascript
 Scenario: a unauthenticated user cannot post a comment
+  And I press "Hello"
   And I follow "Sign out"
   And I am on the show page for article "fake_url"
   
@@ -63,6 +65,7 @@ Scenario: a user cannot delete comments suggested by others
   Given the following comments exist:
     | user_id  | article_id  | body                             |
     | 1        | 1           | Some cool comment I want to add  |
+  And I press "Hello"
   And I follow "Sign out"
   And another user is signed in
   And I am on the show page for article by id "1"
