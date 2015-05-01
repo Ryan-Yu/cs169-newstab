@@ -20,7 +20,7 @@
     <div class="field">
       <%= f.text_field :last_name, :class => "sign-in-form", :placeholder => "Last name" %>
     </div>
-  
+    
     <div class="field">
       <%= f.password_field :password, autocomplete: "off", :class => "sign-in-form", :placeholder => "Password (8 characters minimum)" %>
     </div>
@@ -28,6 +28,13 @@
     <div class="field">
       <%= f.password_field :password_confirmation, autocomplete: "off", :class => "sign-in-form", :placeholder => "Password confirmation" %>
     </div>
+    <br />
+    
+    Date of birth:
+    <div class="field">
+      <%= f.date_field :date_of_birth, :class => "sign-in-form", :placeholder => "Date of birth" %>
+    </div>
+  
   
     <div class="actions">
       <%= f.submit "Register", :class => "logo-picture-button" %>
