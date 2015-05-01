@@ -77,6 +77,17 @@ class ArticlesController < ApplicationController
     end
     
     if @article.save
+      
+      # Try to send a notification to all of the group's members EXCEPT yourself
+      unless @article.group_id.nil?
+        Group.find_by_id(@article.group_id).users.each do |user|
+          unless user.id == current_user.id
+            user.send_notification("Someone in the group #{Group.find_by_id(@article.group_id).group_name} has posted an article!", "/groups/#{@article.group_id}")
+          end
+        end
+      end
+    
+      
       flash[:success] = "Article created!"
       
       # Create comment for article with initial_comment

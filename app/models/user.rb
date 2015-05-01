@@ -45,6 +45,28 @@ class User < ActiveRecord::Base
   
   has_and_belongs_to_many :interested_categories, :class_name => "Category", :join_table => :categories_users
   
+  has_many :notifications, dependent: :destroy
+  has_many :unseen_notifications, -> { where seen: false }, class_name: "Notification"
+  
+  
+  # Sends an unseen notification to 'this' user
+  def send_notification(body, tunnel)
+    unless self.has_unread_notifications_for? body, tunnel
+      self.notifications << Notification.create( seen: false, tunnel: tunnel, body: body )
+    end
+  end
+  
+  def has_unread_notifications_for? body, tunnel
+    # check if user already has a notification for this that they haven't read yet
+    qualifying_notification = self.unseen_notifications.where( body: body, tunnel: tunnel ).first
+    if qualifying_notification
+      # if they do mark it as unseen
+      qualifying_notification.update_attributes seen: false
+      return true
+    end
+    return false
+  end
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
