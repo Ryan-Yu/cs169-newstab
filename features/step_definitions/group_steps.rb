@@ -37,8 +37,8 @@ end
 
 Then(/^the user "1" created the following groups:$/) do |table|
   table.hashes.each do |row|
-    if row[:privacy_label] == "public"
-      User.find(1).groups.create :group_name => row[:groupname]
+    if row[:privacy_level] == "public"
+      User.find(1).groups.create :group_name => row[:groupname], :private => false
     elsif row[:privacy_level] == "private"
       User.find(1).groups.create :group_name => row[:groupname], :private => true
     else

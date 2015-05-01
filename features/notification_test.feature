@@ -16,10 +16,6 @@ Feature: Notifications
       | user_id  | url                                    | initial_comment                             |
       | 1        | cool_news_article.com                  | The description for the next big startup.   |
     Given I am signed in as "Ben"
-    And I am on the groups page
-    And I fill in "group_group_name" with "Phish"
-    And I press "Create Group"
-    Then I should see "Group: Phish"
     And I am on the homepage
     # Given I follow "Groups"
     # And I fill in "New group name" with "Phish"
@@ -44,16 +40,16 @@ Feature: Notifications
   #   And A group invitation is sent to "ben@gmail.com"
   #   Then An email notifying "ben@gmail.com" of addition to the group should be sent
     
-  Scenario: Comment notifications enabled
-    Given I follow "Sign out"
-    Then I am signed in as "Will"
-    Then I am on the show page for article "cool_news_article.com"
-    Then I fill in "comment_box" with "cool story bro"
-    Then I press "Post Comment"
-    Then I follow "Sign out"
-    Then I am signed in as "Ben"
-    Then I follow "notifications-dropdown"
-    Then I should see "1 Will World1 has commented on your article"
+  # Scenario: Comment notifications enabled
+  #   Given I follow "Sign out"
+  #   Then I am signed in as "Will"
+  #   Then I am on the show page for article "cool_news_article.com"
+  #   Then I fill in "comment_box" with "cool story bro"
+  #   Then I press "Post Comment"
+  #   Then I follow "Sign out"
+  #   Then I am signed in as "Ben"
+  #   Then I follow "notifications-dropdown"
+  #   Then I should see "1 Will World1 has commented on your article"
 
     
   # Scenario: Comment notifications disabled
@@ -62,6 +58,11 @@ Feature: Notifications
   #   Then The user should not receive an email
     
   Scenario: Group notifications enabled
+    And I am on the groups page
+    And I fill in "group_group_name" with "Phish"
+    And I press "Create Group"
+    Then I should see "Group: Phish"
+    
     Given I follow "Sign out"
     Then I am signed in as "Will"
     Then I am on the public groups page

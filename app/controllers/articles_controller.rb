@@ -84,6 +84,7 @@ class ArticlesController < ApplicationController
           unless user.id == current_user.id
             user.send_notification("Someone in the group #{Group.find_by_id(@article.group_id).group_name} has posted an article!", "/groups/#{@article.group_id}")
           end
+          # user.send_notification("Someone in the group #{Group.find_by_id(@article.group_id).group_name} has posted an article!", "/groups/#{@article.group_id}")
         end
       end
     

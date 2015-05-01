@@ -11,6 +11,10 @@ module NavigationHelpers
       '/articles'
     when /^the show all users$/
       '/users'
+    when /^the public groups page$/
+      '/public_groups'
+    when /^the groups page$/
+      '/groups'
     when /^the show page for article "(.*)"$/
       article_path(Article.find_by_url($1))
     when /^the show page for article by id "(.*)"$/
