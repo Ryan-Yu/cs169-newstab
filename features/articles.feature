@@ -86,6 +86,6 @@ Scenario: a user can edit his article
     | 2        | cool_news_article.com                  | The description for the next big startup.   |
   Then I am on the show page for article "cool_news_article.com"
   And I follow "Edit Article"
-  And I fill in "What do you want to say about this article?" with "I changed my comment."
+  And I fill in "Article URL" with "Phish"
   And I press "Update Article"
   Then I should see "Article successfully updated."
