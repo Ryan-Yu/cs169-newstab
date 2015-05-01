@@ -58,9 +58,10 @@ Given /^the following users exist:$/  do |table|
       step %Q{I fill in "Email" with "#{row[:username]}@gmail.com"}
       step %Q{I fill in "First name" with "#{row[:username]}"}
       step %Q{I fill in "Last name" with "World1"}
-      step %Q{I fill in "Password" with "helloworld1"}
+      step %Q{I fill in "Password (8 characters minimum)" with "helloworld1"}
       step %Q{I fill in "Password confirmation" with "helloworld1"}
-      step %Q{I press "Sign up"}
+      step %Q{I press "Register"}
+      step %Q{I press "#{row[:username]}"}
       step %Q{I follow "Sign out"}
   end
 end
